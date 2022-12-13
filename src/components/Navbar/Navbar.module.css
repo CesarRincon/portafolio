@@ -4,6 +4,7 @@
     justify-content: space-between;
     padding: 0px 10px;
     align-items: center;
+    position: relative;
 }
 
 .navbar h1 {
@@ -33,3 +34,51 @@
     border-bottom: 3px solid rgb(0, 140, 255);
 }
 
+.buttonMenu{
+    display: none;
+}
+
+
+@media (max-width: 400px) {
+
+    .buttonMenu {
+        display: block;
+        cursor: pointer;
+    }
+
+    .buttonMenu:hover{
+        transform: scale(1.1);
+    }
+
+    .navbar ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        right: 10px;
+        top: 20px;
+        gap: 10px;
+        background-color: white;
+        align-items: center;
+        justify-content: center;
+        padding: 15px;
+        border-radius: 8px;
+        animation: show 1s forwards;
+        z-index: 1;
+    }
+
+    @keyframes show {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 100%;
+        }
+    }
+    .navbar ul a {
+        color: black;
+    }
+
+    .navbar ul::before:hover {
+        display: flex;
+    }
+}
