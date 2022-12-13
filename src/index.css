@@ -1,8 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@500&display=swap');
+
 body {
   margin: 0;
   background-color: black;
+  font-family: 'Inconsolata', monospace;
 }
-@font-face {
-  font-family: "AustraliaBelmonte";
-  src: ("AustraliaBelmonte.otf") format("otf");
-}
+
+
+

@@ -5,6 +5,8 @@ import About from "../About/About";
 import NotFound from "../NotFound/NotFound";
 import Works from "../Works/Works";
 import { AnimatePresence } from 'framer-motion'
+import Pages from "../../pages/front/Pages";
+import Technologies from "../Technologies/Technologies";
 
 
 export default function AnimateRoutes() {
@@ -13,8 +15,8 @@ export default function AnimateRoutes() {
     return (
         <AnimatePresence>
             <Routes location={location} key={location.pathname}>
-                <Route exact path='/' element={<Landing />} />
-                <Route path='/home' element={<Home />} />
+                <Route exact path='/' element={<Pages />} />
+                <Route path='/technologies' element={<Technologies />} />
                 <Route path='/works' element={<Works />} />
                 <Route path='/about' element={<About />} />
                 <Route path='*' element={<NotFound />} />

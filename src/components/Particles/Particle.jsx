@@ -1,6 +1,7 @@
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 import { useCallback } from "react";
+import s from './Particles.module.css'
 
 export default function Particle() {
 
@@ -19,18 +20,16 @@ export default function Particle() {
 
     return (
         <Particles
-            id="tsparticles"
+            id={s.tsparticles}
             init={particlesInit}
             loaded={particlesLoaded}
-            fullscreen= {{
-                enable: false
-            }}
             options={{
                 background: {
                     color: {
                         value: "black",
                     },
                 },
+                fullScreen: false,
                 fpsLimit: 120,
                 interactivity: {
                     events: {

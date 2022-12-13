@@ -1,5 +1,5 @@
 .landing {
-    height: 92.5vh;
+    height: 100vh;
     color: whitesmoke;
     display: flex;
 }
@@ -47,4 +47,24 @@
     bottom: 200px;
     background-image: url("../../image/dev2.jpg");
     background-size: cover;
+}
+
+@media (max-width: 400px) {
+    .landing {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .photo {
+        display: none;
+    }
+    .sides {
+        width: 100%;
+    }
+
+    .sideLeft {
+        margin: 0;
+    }
 }

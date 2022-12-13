@@ -2,6 +2,7 @@ import Navbar from '../../components/Navbar/Navbar'
 import s from './Landing.module.css'
 import { motion } from "framer-motion"
 import Particle from '../../components/Particles/Particle'
+import Home from '../Home/Home'
 
 
 export default function Landing() {

@@ -1,4 +1,53 @@
 .containerW {
-    background-color: blue;
     height: 100vh;
+    color: white;
+    border-top: 5px solid red;
+    animation: rgb 6s linear infinite;
+}
+
+@keyframes rgb {
+    0% {
+        border-top: 5px solid red;
+    }
+
+    25% {
+        border-top: 5px solid rgb(255, 247, 0);
+    }
+
+    50% {
+        border-top: 5px solid rgb(0, 0, 255);
+    }
+
+    75% {
+        border-top: 5px solid rgb(217, 0, 255);
+    }
+
+    100% {
+        border-top: 5px solid rgb(0, 255, 8);
+    }
+}
+
+.item {
+    height: 720px;
+}
+
+.containerW main iframe {
+    width: 350px;
+    height: 600px;
+}
+
+.containerW main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 400px) {
+
+    .containerW h1 {
+        margin-left: 40px;
+    }
 }
