@@ -45,7 +45,7 @@
         display: block;
         cursor: pointer;
         font-size: larger;
-        background-color: red;
+       
         width: 50px;
         text-align: center;
     }
@@ -68,6 +68,19 @@
         border-radius: 8px;
         animation: show 1s forwards;
         z-index: 1;
+        font-size: 18px;
+    }
+
+    .navbar ul::before {
+        content: "";
+        background-color: white;
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        top: -4px;
+        right: 15px;
+        transform: rotate(45deg);
+       
     }
 
     @keyframes show {
