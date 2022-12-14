@@ -9,7 +9,7 @@
 
 .navbar h1 {
     font-family: "AustraliaBelmonte";
-    margin: 0;
+    margin: 10px;
 }
 
 .navbar ul{
@@ -44,6 +44,10 @@
     .buttonMenu {
         display: block;
         cursor: pointer;
+        font-size: larger;
+        background-color: red;
+        width: 50px;
+        text-align: center;
     }
 
     .buttonMenu:hover{
