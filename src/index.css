@@ -1,6 +1,15 @@
+html {
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+}
+
 body {
   margin: 0;
   background-color: black;
+  height: 100%;
 }
 @font-face {
   font-family: "AustraliaBelmonte";
