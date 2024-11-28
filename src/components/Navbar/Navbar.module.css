@@ -1,101 +1,74 @@
 .navbar {
-    display: flex;
-    color: whitesmoke;
-    justify-content: space-between;
-    padding: 0px 10px;
-    align-items: center;
-    position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 50px;
+  height: 250px;
+  border-radius: 50px;
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
-.navbar h1 {
-    font-family: "AustraliaBelmonte";
-    margin: 10px;
+.containerItems {
+  z-index: 1;
 }
 
-.navbar ul{
-    display: flex;
+.containerItems {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 100%;
 }
 
-
-.navbar ul li {
-    list-style: none;
-    text-align: center;
-    margin: 0px 10px;
-    cursor: pointer;
-
+.containerItems li {
+  width: 80%;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
-.navbar a {
-    text-decoration: none;
-    color: whitesmoke;
-
-}
-.active {
-    border-bottom: 3px solid rgb(0, 140, 255);
+.itemsMenu {
+  background-color: rgb(164, 164, 164);
 }
 
-.buttonMenu{
-    display: none;
+.containerItems li:hover {
+  backdrop-filter: blur(10px);
 }
 
+.containerItems li::before {
+  content: attr(data-text);
+  position: absolute;
+  bottom: -5px;
+  right: -15px;
+  font-size: 12px;
+  background-color: #ffffff;
+  padding: 0 5px;
+  border-radius: 4px;
+  visibility: hidden;
+  transition: opacity 1.5s ease;
+  opacity: 0;
+}
 
-@media (max-width: 400px) {
+.containerItems li:hover::before {
+  visibility: visible;
+  opacity: 1;
+}
 
-    .buttonMenu {
-        display: block;
-        cursor: pointer;
-        font-size: larger;
-       
-        width: 50px;
-        text-align: center;
-    }
-
-    .buttonMenu:hover{
-        transform: scale(1.1);
-    }
-
-    .navbar ul {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        right: 10px;
-        top: 20px;
-        gap: 10px;
-        background-color: white;
-        align-items: center;
-        justify-content: center;
-        padding: 15px;
-        border-radius: 8px;
-        animation: show 1s forwards;
-        z-index: 2;
-        font-size: 18px;
-    }
-
-    .navbar ul::before {
-        content: "";
-        background-color: white;
-        width: 20px;
-        height: 20px;
-        position: absolute;
-        top: -4px;
-        right: 15px;
-        transform: rotate(45deg);
-       
-    }
-
-    @keyframes show {
-        from {
-            opacity: 0;
-        }
-        to {
-            opacity: 100%;
-        }
-    }
-    .navbar ul a {
-        color: black;
-    }
-
-    .navbar ul::before:hover {
-        display: flex;
-    }
+@media (max-width: 600px) {
+  .navbar {
+    width: 80%;
+    height: 50px;
+  }
+  .containerItems {
+    flex-direction: row;
+  }
+  .containerItems li {
+    width: 50px;
+  }
 }

@@ -1,0 +1,30 @@
+.container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-image: url(./images/background.jpg);
+  background-size: cover;
+  gap: 10px;
+  perspective: 1200px;
+  overflow: hidden;
+}
+
+.containerContent {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+@media (max-width: 600px) {
+  .container {
+    flex-direction: column;
+    justify-content: start;
+    padding-top: 80px;
+  }
+}

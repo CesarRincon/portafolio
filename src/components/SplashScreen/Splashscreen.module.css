@@ -1,0 +1,53 @@
+.containerSplash {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  flex-direction: row;
+  gap: 10px;
+  animation: disappearContainer 10s forwards;
+}
+
+.textName {
+  color: #fff;
+  animation: disappear 3s forwards;
+  animation-delay: 1s;
+}
+
+.textPortfolio {
+  color: #fff;
+  font-size: 30px;
+  font-weight: "400";
+  animation: disappearTextPortfolio 3s forwards;
+  animation-delay: 1s;
+}
+
+@keyframes disappear {
+  0% {
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+  }
+  100% {
+    clip-path: inset(0 0 0 100%);
+    opacity: 0;
+  }
+}
+@keyframes disappearTextPortfolio {
+  0% {
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+  }
+  100% {
+    clip-path: inset(0 100% 0 0);
+    opacity: 0;
+  }
+}
+@keyframes disappearContainer {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    display: none;
+  }
+}

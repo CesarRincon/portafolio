@@ -1,80 +1,93 @@
 .container {
-    padding: 10px;
-    background-color: black;
-    height: 100vh;
-    color: white;
-    display: flex;
-    animation: rgb 6s linear infinite;
+  width: 80vw;
+  height: 80vh;
+  border-radius: 24px;
+  position: relative;
+  display: flex;
+  z-index: 1;
+  flex-direction: column;
+  flex-wrap: wrap;
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.3);
+  transition: transform 1s ease;
+  transform-style: preserve-3d;
+  transform: rotateY(180deg);
 }
 
-@keyframes rgb {
-    0% {
-        border-top: 5px solid red;
-    }
-    25% {
-        border-top: 5px solid rgb(255, 247, 0);
-    }
-    50% {
-        border-top: 5px solid rgb(0, 0, 255);
-    }
-    75% {
-        border-top: 5px solid rgb(217, 0, 255);
-    }
-    100% {
-        border-top: 5px solid rgb(0, 255, 8);
-    }
+@keyframes flip {
+  0% {
+    transform: rotateY(180deg);
+    visibility: hidden;
+  }
+  100% {
+    transform: rotateY(0deg);
+  }
 }
 
-.contain {
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: center;
+.flip {
+  animation: flip 1s forwards;
 }
 
-
-.aboutText{
-    width: 50%;
-    text-align: center;
-    padding: 0px 15px;
-    font-size: 28px;
+.content {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  animation: fadeIn 1s ease-in;
+  align-items: center;
 }
 
-.aboutImg{
-    width: 50%;
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
-@media (max-width: 400px) {
-    .container {
-        flex-direction: column;
-        align-items: center;
-    }
+.title {
+  color: #fff;
+  text-align: center;
+  font-size: 30px;
+}
 
-    .container h1 {
-        margin-left: 40px;
-    }
+.textInformation {
+  width: 50%;
+  max-width: 50%;
+  padding: 0 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
+.textInformation p {
+  text-align: justify;
+  font-size: 18px;
+  color: #fff;
+}
 
-    .contain {
-        display: flex;
-        flex-direction: column-reverse;
-    }
+.icon {
+  width: 150px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-    .container h1{
-        width: 100%;
-        height: 40px;
-    }
-    .aboutText{
-        width: 100%;
-        padding: 0;
-        overflow: scroll;
-        height: 80vh;
-    }
+.icon:hover {
+  background-color: rgba(164, 164, 164, 0.795);
+  backdrop-filter: blur(10px);
+}
 
-    .aboutText p {
-        padding: 12px;
-    }
-    .aboutImg {
-        width: 100%;
-        padding: 0;
-    }
+.listSocialMedia {
+  display: flex;
+}
+
+.button {
+  width: 50%;
+  height: 40px;
 }

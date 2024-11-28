@@ -1,26 +1,59 @@
-import s from './Navbar.module.css'
-import { NavLink, Link } from 'react-router-dom'
+import s from "./Navbar.module.css";
+import { NavLink, Link } from "react-router-dom";
+import { FaHome } from "react-icons/fa";
+import { BsPersonWorkspace } from "react-icons/bs";
+import { MdPerson } from "react-icons/md";
+import { AiOutlineMessage } from "react-icons/ai";
 
-export default function Navbar() {
+export default function Navbar(props) {
+  const { setScreen, screen, setFlip } = props;
 
-
-  const activeNav = () => {
-    let ul = document.getElementById('NavUl');
-    if (ul.style.display === "flex") return ul.style.display = "none";
-    ul.style.display = "flex";
-  }
-
+  const handleClick = (item) => {
+    if (screen === item) return;
+    setScreen(item);
+    setFlip(true);
+  };
 
   return (
     <nav className={s.navbar}>
-      <h1><Link to={'/'}>Cesar Rincon</Link></h1>
-      <span className={s.buttonMenu} onClick={() => activeNav()}>Menu</span>
-      <ul id='NavUl'>
-        <li><NavLink className={({isActive}) => isActive ? s.active : "" } to={'/technologies'}>Technologies</NavLink></li>
-        <li><NavLink className={({isActive}) => isActive ? s.active : "" } to={'/works'}>Works</NavLink></li>
-        <li><NavLink className={({isActive}) => isActive ? s.active : "" } to={'/About'}>About Me</NavLink></li>
-        <li><NavLink className={({isActive}) => isActive ? s.active : "" } to={'/Contact'}>Contact</NavLink></li>
+      <ul id="NavUl" className={s.containerItems}>
+        <li
+          data-text="Home"
+          className={screen === "home" ? s.itemsMenu : ""}
+          onClick={() => handleClick("home")}
+        >
+          <NavLink to={"/home"}>
+            <FaHome color="#fff" size={25} />
+          </NavLink>
+        </li>
+        <li
+          data-text="About"
+          className={screen === "about" ? s.itemsMenu : ""}
+          onClick={() => handleClick("about")}
+        >
+          <NavLink to={"/about"}>
+            <MdPerson size={25} color="#fff" />
+          </NavLink>
+        </li>
+        <li
+          data-text="Projects"
+          className={screen === "projects" ? s.itemsMenu : ""}
+          onClick={() => handleClick("projects")}
+        >
+          <NavLink to={"/projects"}>
+            <BsPersonWorkspace color="#fff" size={25} />
+          </NavLink>
+        </li>
+        <li
+          data-text="Contact"
+          className={screen === "contact" ? s.itemsMenu : ""}
+          onClick={() => handleClick("contact")}
+        >
+          <NavLink to={"/contact"}>
+            <AiOutlineMessage color="#fff" size={25} />
+          </NavLink>
+        </li>
       </ul>
     </nav>
-  )
+  );
 }

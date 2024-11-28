@@ -8,10 +8,7 @@ import Technologies from '../../components/Technologies/Technologies'
 export default function Pages() {
   return (
     <div>
-      <Landing />
-      <About />
-      <Technologies />
-      <Works />
+      <Home/>
     </div>
   )
 }

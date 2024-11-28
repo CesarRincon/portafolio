@@ -1,21 +1,28 @@
-import './App.css';
-import { Routes, Route, useLocation } from "react-router-dom";
-import Landing from './pages/Landing/Landing';
-import NotFound from './components/NotFound/NotFound';
-import Works from './components/Works/Works';
-import About from './components/About/About';
-import Home from './pages/Home/Home';
-import AnimateRoutes from './components/AnimatedRoutes/AnimateRoutes';
-import Navbar from './components/Navbar/Navbar';
-
+import { useState } from "react";
+import styles from "./App.module.css";
+import Splashscreen from "./components/SplashScreen/Splashscreen";
+import { RenderPage } from "./components/renderPage/RenderPage";
+import Navbar from "./components/Navbar/Navbar";
 
 function App() {
-  return (
-    <div>
-      <Navbar />
-      <AnimateRoutes/>
-    </div>
+  const [isLoading, setIsLoading] = useState(false);
+  const [screen, setScreen] = useState("home");
+  const [flip, setFlip] = useState(true);
 
+  const props = { flip, screen };
+
+
+  return (
+    <>
+      {isLoading ? (
+        <Splashscreen setIsLoading={setIsLoading} />
+      ) : (
+        <div className={styles.container}>
+          <Navbar setFlip={setFlip} setScreen={setScreen} screen={screen} />
+          {RenderPage(props)}
+        </div>
+      )}
+    </>
   );
 }
 
