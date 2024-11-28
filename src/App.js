@@ -5,12 +5,11 @@ import { RenderPage } from "./components/renderPage/RenderPage";
 import Navbar from "./components/Navbar/Navbar";
 
 function App() {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [screen, setScreen] = useState("home");
   const [flip, setFlip] = useState(true);
 
   const props = { flip, screen };
-
 
   return (
     <>
