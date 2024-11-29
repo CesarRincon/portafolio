@@ -1,3 +1,11 @@
+@font-face {
+  font-family: "jost";
+  src: url("/src/fonts/Jost/Jost-Black.ttf") format("ttf"),
+    url("/src/fonts/Jost/Jost-Black.ttf") format("ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
 .container {
   width: 80vw;
   height: 80vh;
@@ -8,7 +16,7 @@
   flex-direction: column;
   flex-wrap: wrap;
   backdrop-filter: blur(10px);
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: #00000097;
   transition: transform 1s ease;
   transform-style: preserve-3d;
   transform: rotateY(180deg);
@@ -48,15 +56,51 @@
   }
 }
 
+.containerTitle {
+  align-self: flex-start;
+}
+
+.backTitle {
+  color: #ffffff;
+  text-align: left;
+  font-size: 19px;
+  font-family: "jost", verdana, sans-serif;
+  margin: 0;
+  letter-spacing: 1px;
+  position: absolute;
+  top: 15px;
+}
+
 .title {
-  color: #fff;
+  color: #ffffff;
   text-align: center;
-  font-size: 30px;
+  font-size: 40px;
+  font-family: "jost", verdana, sans-serif;
+  margin: 0;
+  font-weight: 500;
+}
+.socialMediaTitle {
+  color: #2c2d36;
+  text-align: center;
+  font-size: 20px;
+  font-family: "jost", verdana, sans-serif;
+  margin: 0;
+  font-weight: 500;
+}
+
+.informationContent {
+  background-color: rgb(250, 235, 215);
+  height: 92%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .textInformation {
-  width: 50%;
-  max-width: 50%;
+  width: 100%;
+  height: 100%;
   padding: 0 50px;
   display: flex;
   flex-direction: column;
@@ -64,15 +108,16 @@
   justify-content: center;
 }
 
-.textInformation p {
+.text {
   text-align: justify;
-  font-size: 18px;
-  color: #fff;
+  font-size: 16px;
+  color: #ffffff;
+  font-family: "jost", verdana, sans-serif;
 }
 
 .icon {
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -90,4 +135,54 @@
 .button {
   width: 50%;
   height: 40px;
+  background-color: #2c2d36;
+  color: #ffffff;
+  font-family: "jost", verdana, sans-serif;
+  letter-spacing: 1px;
+  font-weight: 500;
+  font-size: 16px;
+  margin-top: 10px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border: 2px solid #2c2d36;
+}
+
+.button:hover {
+  background-color: rgb(250, 235, 215);
+  border: 2px solid #2c2d36;
+  color: #2c2d36;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+
+  .container {
+    width: 90vw;
+  }
+
+  .content {
+    flex-direction: column;
+    position: relative;
+    overflow-y: scroll;
+    width: 100%;
+    padding-bottom: 20px;
+  }
+
+  .textInformation {
+    width: 90%;
+    height: 2000px;
+    align-items: center;
+    justify-content: center;
+  }
+  .containerTitle {
+    display: flex;
+    height: 85px;
+    align-items: flex-end;
+  }
+  .informationContent {
+    height: 500px;
+  }
+  .button {
+    width: 90%;
+    height: 50px;
+  }
 }

@@ -2,9 +2,30 @@ import React, { useEffect, useState } from "react";
 import style from "./About.module.css";
 import { Link } from "react-router-dom";
 import GitHubIcon from "../../utils/icons/GithubIcon";
+import profileImage from "../../images/Me.jpg";
+import linkedinImage from "../../images/1947708-middle.png";
 
 export const About = (props) => {
   const { flip } = props;
+
+  const text = "César Rincón";
+  const speed = 1000;
+  let index = 0;
+
+  const typeWriter = () => {
+    if (index < text.length) {
+      const titleD = document.getElementById("title");
+      for (let i = 0; i < text.length; i++) {
+        setTimeout(() => {
+          titleD.innerText += text[i];
+        }, i * speed);
+      }
+    }
+  };
+
+  useEffect(() => {
+    // typeWriter();
+  }, []);
 
   return (
     <div
@@ -13,8 +34,13 @@ export const About = (props) => {
     >
       <section className={style.content}>
         <div className={style.textInformation}>
-          <h1 className={style.title}>About Me</h1>
-          <p>
+          <div className={style.containerTitle}>
+            <p className={style.backTitle}>About</p>
+            <p id="title" className={style.title}>
+              César Rincón
+            </p>
+          </div>
+          <p className={style.text}>
             I am a frontend developer with a true passion for what I do. Over my
             time in the field, I've had the opportunity to be involved in the
             development and support of several applications, where I focused on
@@ -27,7 +53,7 @@ export const About = (props) => {
             and refining my skills, always striving for excellence in every
             project.
           </p>
-          <p>
+          <p className={style.text}>
             Since I was a child, I’ve always been passionate about programming.
             I fondly remember writing my first lines of HTML at the age of 11 or
             12, and since then, I’ve been on a continuous journey of learning
@@ -40,21 +66,24 @@ export const About = (props) => {
           </p>
         </div>
         <div className={style.textInformation}>
-          <h1 className={style.title}>Follow me on social media</h1>
-          <div className={style.listSocialMedia}>
-            <Link className={style.icon}>
-              <GitHubIcon width="130px" height="130px" />
-            </Link>
-            <Link className={style.icon}>
-              <GitHubIcon width="130px" height="130px" />
-            </Link>
-            <Link className={style.icon}>
-              <GitHubIcon width="130px" height="130px" />
-            </Link>
-          </div>
-          <div>
-            <p>¿Quieres dejarme un mensaje?</p>
-            <button className={style.button}>Escribeme!</button>
+          <div className={style.informationContent}>
+            <div>
+              <img src={profileImage} alt="" width={220} height={280} />
+            </div>
+
+            <p className={style.socialMediaTitle}>Follow me on social media</p>
+            <div className={style.listSocialMedia}>
+              <Link className={style.icon}>
+                <GitHubIcon width="70px" height="70px" />
+              </Link>
+              <Link className={style.icon}>
+                <img src={linkedinImage} alt="" width="70px" height="70px" />
+              </Link>
+              <Link className={style.icon}>
+                <GitHubIcon width="70px" height="70px" />
+              </Link>
+            </div>
+              <button className={style.button}>Escribeme</button>
           </div>
         </div>
       </section>
