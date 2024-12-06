@@ -1,15 +1,8 @@
 import React from "react";
 
 const GitHubIcon = (props) => {
-    
   return (
-    <svg
-      width="800px"
-      height="800px"
-      viewBox="0 0 48 48"
-      xmlns="http://www.w3.org/2000/svg"
-      {...props}
-    >
+    <svg width="800px" height="800px" viewBox="0 0 48 48" {...props}>
       <title>GitHub</title>
       <g id="Layer_2" data-name="Layer 2">
         <g id="invisible_box" data-name="invisible box">
