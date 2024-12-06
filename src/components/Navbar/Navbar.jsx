@@ -1,5 +1,5 @@
 import s from "./Navbar.module.css";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { FaHome } from "react-icons/fa";
 import { BsPersonWorkspace } from "react-icons/bs";
 import { MdPerson } from "react-icons/md";
@@ -13,7 +13,6 @@ export default function Navbar(props) {
     setScreen(item);
     setFlip(true);
   };
-
   return (
     <nav className={s.navbar}>
       <ul id="NavUl" className={s.containerItems}>
@@ -23,7 +22,10 @@ export default function Navbar(props) {
           onClick={() => handleClick("home")}
         >
           <NavLink to={"/home"}>
-            <FaHome color="#fff" size={25} />
+            <FaHome
+              color={screen === "home" ? "#2c2d36" : "rgb(250, 235, 215)"}
+              size={25}
+            />
           </NavLink>
         </li>
         <li
@@ -32,7 +34,10 @@ export default function Navbar(props) {
           onClick={() => handleClick("about")}
         >
           <NavLink to={"/about"}>
-            <MdPerson size={25} color="#fff" />
+            <MdPerson
+              size={25}
+              color={screen === "about" ? "#2c2d36" : "rgb(250, 235, 215)"}
+            />
           </NavLink>
         </li>
         <li
@@ -41,7 +46,10 @@ export default function Navbar(props) {
           onClick={() => handleClick("projects")}
         >
           <NavLink to={"/projects"}>
-            <BsPersonWorkspace color="#fff" size={25} />
+            <BsPersonWorkspace
+              color={screen === "projects" ? "#2c2d36" : "rgb(250, 235, 215)"}
+              size={25}
+            />
           </NavLink>
         </li>
         <li
@@ -50,7 +58,10 @@ export default function Navbar(props) {
           onClick={() => handleClick("contact")}
         >
           <NavLink to={"/contact"}>
-            <AiOutlineMessage color="#fff" size={25} />
+            <AiOutlineMessage
+              color={screen === "contact" ? "#2c2d36" : "rgb(250, 235, 215)"}
+              size={25}
+            />
           </NavLink>
         </li>
       </ul>

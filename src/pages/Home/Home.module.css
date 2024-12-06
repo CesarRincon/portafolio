@@ -1,19 +1,20 @@
 .containerContent {
   width: 80vw;
   height: 80vh;
-  border-radius: 24px;
+  border-radius: 10px;
   position: relative;
   display: flex;
   z-index: 1;
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   backdrop-filter: blur(10px);
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: #00000097;
   transition: transform 1s ease;
   transform-style: preserve-3d;
   transform: rotateY(180deg);
+  overflow: hidden;
 }
 
 @keyframes flip {
@@ -29,64 +30,46 @@
   animation: flip 1s forwards;
 }
 
-.sectionTwo {
-  z-index: 1;
+.sectionResumePortfolio {
   width: 65%;
-  height: 100%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   position: relative;
-  padding: 0 10px;
   animation: fadeIn 1s ease-in;
-}
-.sectionTwoContent {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 100%;
-  height: 75%;
-  align-items: center;
-  justify-content: center;
-  padding-top: 10px;
+  padding: 0px 10px;
 }
 
-.one {
-  /* background-color: rgba(228, 228, 228, 0.367);
-  backdrop-filter: blur(10px); */
+.itemProfile {
   width: 50%;
-  height: 70%;
-  border-radius: 24px;
-}
-.two {
-  /* background-color: rgba(228, 228, 228, 0.367);
-  backdrop-filter: blur(10px); */
-  width: 50%;
-  height: 70%;
-  border-radius: 24px;
+  border-radius: 8px;
 }
 
-.sliderContent {
+.sliderContainer {
   width: 100%;
-  height: 60%;
+  height: 45%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
-  /* background-color: rgba(228, 228, 228, 0.367); */
-  /* backdrop-filter: blur(10px); */
-  border-radius: 24px;
+  border-radius: 8px;
 }
 
-.sectionThree {
+.sectionProfile {
   width: 30%;
-  height: 100%;
+  height: 90%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 0 10px;
+  padding: 15px 10px;
   animation: fadeIn 1s ease-in;
+  position: relative;
+  background-color: rgb(250, 235, 215);
+  border-radius: 8px;
+  margin-left: 10px;
+
 }
 
 @keyframes fadeIn {
@@ -101,27 +84,44 @@
   }
 }
 
-.sectionThreeContent {
-  /* background-color: rgba(228, 228, 228, 0.367);
-  backdrop-filter: blur(10px); */
-  width: 100%;
-  height: 95%;
-  border-radius: 24px;
-}
-
-.one:hover,
-.two:hover {
-  background-color: rgba(164, 164, 164, 0.795);
+.itemProfile:hover {
+  background-color: rgb(250, 235, 215);
   backdrop-filter: blur(10px);
   cursor: pointer;
+  color: #2c2d36;
+}
+.itemProfile:hover .itemProfileTitle,
+.itemProfile:hover .descriptionText {
+  color: #2c2d36;
+}
+
+.itemProfileTitle {
+  color: rgb(250, 235, 215);
+  margin: 0;
+  margin-left: 20px;
+  align-self: flex-start;
+  font-family: "jost", verdana, sans-serif;
+}
+
+.descriptionText {
+  text-align: justify;
+  align-self: center;
+  justify-self: center;
+  width: 90%;
+  color: rgb(250, 235, 215);
+  margin-bottom: 10px;
+  margin-top: 5px;
+  font-size: 14px;
+  font-family: "jost", verdana, sans-serif;
 }
 
 .title {
   margin: 0;
   margin-top: 10px;
-  margin-left: 20px;
+  margin-left: 13px;
   align-self: flex-start;
-  color: #fff;
+  color: #2c2d36;
+  font-family: "jost", verdana, sans-serif;
 }
 
 .containerImage {
@@ -130,53 +130,22 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 24px;
-}
-
-.contentImage {
-  /* background-color: rgb(164, 164, 164);
-  backdrop-filter: blur(10px); */
-  width: 70%;
-  height: 90%;
-  border-radius: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .image {
-  border-radius: 24px;
-  width: 90%;
-  height: 90%;
+  border-radius: 10px;
+  width: 250px;
+  height: 250px;
 }
 
-.containerDescriptionImage {
-  width: 100%;
-  height: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.description {
+.descriptionContainer {
   width: 90%;
   height: 90%;
-  backdrop-filter: blur(10px);
-  border-radius: 24px;
+  background-color: rgb(250, 235, 215);
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.descriptionText {
-  text-align: justify;
-  align-self: center;
-  justify-self: center;
-  width: 90%;
-  color: #fff;
-  margin-bottom: 10px;
-  margin-top: 5px;
-  font-size: 14px;
 }
 
 .descriptionTextAboutMe {
@@ -184,105 +153,67 @@
   align-self: center;
   justify-self: center;
   width: 90%;
-  color: #fff;
+  color: #2c2d36;
   margin-bottom: 10px;
   margin-top: 5px;
   font-size: 15px;
+  font-family: "jost", verdana, sans-serif;
 }
 
 .button {
-  background-color: #ffffff57;
+  background-color: #2c2d36;
   backdrop-filter: blur(10px);
-  border: 0;
   border-radius: 4px;
   padding: 5px;
   color: #fff;
-  font-weight: bold;
   width: 60%;
   text-align: center;
   position: absolute;
   bottom: 20px;
+  font-weight: 500;
+  font-size: 16px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border: 2px solid #2c2d36;
+  margin-bottom: 10px;
 }
 
 .button:hover {
+  background-color: rgb(250, 235, 215);
+  border: 2px solid #2c2d36;
+  color: #2c2d36;
   cursor: pointer;
-  color: #fff;
 }
 
 @media (max-width: 600px) {
   .containerContent {
     width: 90vw;
-    height: 80%;
-    flex-direction: column-reverse;
     overflow-y: scroll;
-    flex-wrap: nowrap;
-    align-items: center;
+    padding-top: 15px;
+    justify-content: center;
   }
-  .sectionTwo {
-    width: 100%;
-    height: 1800px;
-    display: block;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    align-items: flex-start;
-    justify-content: flex-start;
-    padding: 0;
+
+  .sectionProfile {
+    width: 90%;
+  }
+
+  .button {
+    width: 90%;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: "jost", verdana, sans-serif;
+    letter-spacing: 1px;
+  }
+
+  .sectionResumePortfolio {
+    width: 95%;
+    margin-top: 10px;
     gap: 10px;
   }
-  .sectionTwoContent {
-    flex-direction: column;
-    width: 100%;
-    height: 1800px;
-    display: block;
-    /* align-items: start;
-    justify-content: start; */
-  }
-  .sliderContent {
-    width: 100%;
-    height: 300px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    position: relative;
-    border-radius: 24px;
-  }
 
-  .sectionThree {
+  .itemProfile {
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    padding: 0;
-  }
-
-  .sectionThreeContent {
-    width: 100%;
-    height: 580px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-  }
-
-  .containerImage {
-    height: 60%;
-  }
-
-  .containerDescriptionImage {
-    height: 80%;
-  }
-
-  .one,
-  .two,
-  .three {
-    width: 100%;
-    height: auto;
-    padding: 5px 0;
-  }
-  .image {
-    height: 220px;
+    padding: 10px 0px;
   }
 }
