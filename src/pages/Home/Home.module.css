@@ -69,7 +69,6 @@
   background-color: rgb(250, 235, 215);
   border-radius: 8px;
   margin-left: 10px;
-
 }
 
 @keyframes fadeIn {
@@ -194,6 +193,7 @@
 
   .sectionProfile {
     width: 90%;
+    margin-left: 0px;
   }
 
   .button {
