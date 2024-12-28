@@ -1,0 +1,21 @@
+.mockupContainer {
+  position: relative;
+  align-self: center;
+  height: 347px;
+  width: 165px;
+}
+
+.image {
+  position: absolute;
+  top: 8px;
+  left: 5px;
+  width: 154px;
+  height: 335px;
+  border-radius: 12px;
+}
+
+.mockup {
+  position: absolute;
+  left: 0;
+  top: 0;
+}

@@ -1,3 +1,11 @@
+@font-face {
+  font-family: "jost";
+  src: url("/src/fonts/Jost/Jost-Black.ttf") format("ttf"),
+    url("/src/fonts/Jost/Jost-Black.ttf") format("ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
 .container {
   width: 80vw;
   height: 80vh;
@@ -6,9 +14,8 @@
   display: flex;
   z-index: 1;
   flex-direction: column;
-  flex-wrap: wrap;
   backdrop-filter: blur(10px);
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: #00000097;
   transition: transform 1s ease;
   transform-style: preserve-3d;
   transform: rotateY(180deg);
@@ -26,4 +33,81 @@
 
 .flip {
   animation: flip 1s forwards;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  height: 100%;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 10px;
+  animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.title {
+  margin: 0;
+  margin-top: 10px;
+  margin-left: 10px;
+  color: rgb(250, 235, 215);
+  text-align: center;
+  font-size: 40px;
+  font-family: "jost", verdana, sans-serif;
+  font-weight: 500;
+}
+
+.containerProject {
+  width: 34%;
+  height: 100%;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.titleProject {
+  color: rgb(250, 235, 215);
+  text-align: left;
+  font-size: 19px;
+  font-family: "jost", verdana, sans-serif;
+  margin: 0;
+  letter-spacing: 1px;
+  margin-left: 10px;
+}
+
+.description {
+  color: #ffff;
+  font-size: 13px;
+  font-family: "jost", verdana, sans-serif;
+  text-align: center;
+}
+.storesContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 600px) {
+  .content {
+    flex-wrap: wrap;
+    overflow-y: scroll;
+  }
+  .containerProject {
+    width: 90%;
+  }
+  .titleProject {
+    margin-bottom: 10px;
+  }
 }

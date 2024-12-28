@@ -61,7 +61,7 @@
 }
 
 .backTitle {
-  color: #ffffff;
+  color: rgb(250, 235, 215);
   text-align: left;
   font-size: 19px;
   font-family: "jost", verdana, sans-serif;
@@ -72,7 +72,7 @@
 }
 
 .title {
-  color: #ffffff;
+  color: rgb(250, 235, 215);
   text-align: center;
   font-size: 40px;
   font-family: "jost", verdana, sans-serif;

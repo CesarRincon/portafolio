@@ -1,31 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import style from "./About.module.css";
 import { Link } from "react-router-dom";
 import GitHubIcon from "../../utils/icons/GithubIcon";
 import profileImage from "../../images/Me.jpg";
-import linkedinImage from "../../images/1947708-middle.png";
+import logolinkedin from "../../images/linkedin-logo.png";
+import logogmail from "../../images/logo-gmail.png";
 
 export const About = (props) => {
   const { flip } = props;
-
-  const text = "César Rincón";
-  const speed = 1000;
-  let index = 0;
-
-  const typeWriter = () => {
-    if (index < text.length) {
-      const titleD = document.getElementById("title");
-      for (let i = 0; i < text.length; i++) {
-        setTimeout(() => {
-          titleD.innerText += text[i];
-        }, i * speed);
-      }
-    }
-  };
-
-  useEffect(() => {
-    // typeWriter();
-  }, []);
 
   return (
     <div
@@ -73,17 +55,17 @@ export const About = (props) => {
 
             <p className={style.socialMediaTitle}>Follow me on social media</p>
             <div className={style.listSocialMedia}>
-              <Link className={style.icon}>
+              <div className={style.icon}>
                 <GitHubIcon width="70px" height="70px" />
-              </Link>
-              <Link className={style.icon}>
-                <img src={linkedinImage} alt="" width="70px" height="70px" />
-              </Link>
-              <Link className={style.icon}>
-                <GitHubIcon width="70px" height="70px" />
-              </Link>
+              </div>
+              <div className={style.icon}>
+                <img src={logolinkedin} alt="" width="100px" height="100px" />
+              </div>
+              <div className={style.icon}>
+                <img src={logogmail} alt="" width="120px" height="70px" />
+              </div>
             </div>
-              <button className={style.button}>Escribeme</button>
+            <button className={style.button}>Message me here!</button>
           </div>
         </div>
       </section>
