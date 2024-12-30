@@ -91,7 +91,7 @@
   color: #ffff;
   font-size: 13px;
   font-family: "jost", verdana, sans-serif;
-  text-align: center;
+  text-align: justify;
 }
 .storesContainer {
   display: flex;

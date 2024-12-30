@@ -71,59 +71,9 @@ export const techImages = [
   },
 ];
 
-export let next = (value) => {
-  switch (value) {
-    case 1:
-      return (document.getElementById(
-        "containerMain",
-      ).style = `transform: translateX(${1760})`);
-    case 2:
-      return (document.getElementById(
-        "containerMain",
-      ).style = `transform: translateX(${740}px)`);
-    case 3:
-      return (document.getElementById(
-        "containerMain",
-      ).style = `transform: translateX(${-260}px)`);
-    case 4:
-      return (document.getElementById(
-        "containerMain",
-      ).style = `transform: translateX(${-1250}px)`);
-    case 5:
-      return (document.getElementById(
-        "containerMain",
-      ).style = `transform: translateX(${-1740}px)`);
-    default:
-      return (document.getElementById(
-        "containerMain",
-      ).style = `transform: translateX(${1760})`);
-  }
-};
-export let prev = (value) => {
-  switch (value) {
-    case 1:
-      return (document.getElementById(
-        "containerMain",
-      ).style = `transform: translateX(${1760})`);
-    case 2:
-      return (document.getElementById(
-        "containerMain",
-      ).style = `transform: translateX(${740}px)`);
-    case 3:
-      return (document.getElementById(
-        "containerMain",
-      ).style = `transform: translateX(${-260}px)`);
-    case 4:
-      return (document.getElementById(
-        "containerMain",
-      ).style = `transform: translateX(${-1250}px)`);
-    case 5:
-      return (document.getElementById(
-        "containerMain",
-      ).style = `transform: translateX(${-1740}px)`);
-    default:
-      return (document.getElementById(
-        "containerMain",
-      ).style = `transform: translateX(${1760})`);
-  }
-};
+const importImages = (requireContext) =>
+  requireContext.keys().map(requireContext);
+
+export const imagesOlimpica = importImages(
+  require.context("../images/Olimpica", false, /\.(png|jpe?g|svg)$/),
+);

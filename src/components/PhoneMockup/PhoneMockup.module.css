@@ -19,3 +19,24 @@
   left: 0;
   top: 0;
 }
+
+.iconRow {
+  position: absolute;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 50%;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}
+
+.iconBack {
+  left: -40px;
+}
+
+.iconNext {
+  right: -40px;
+}

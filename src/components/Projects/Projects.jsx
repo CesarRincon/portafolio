@@ -13,16 +13,13 @@ export const Projects = (props) => {
           <h4 className={style.titleProject}>Olimpica</h4>
           <PhoneMockup />
           <p className={style.description}>
-            Mi rol en el proyecto:
+            My Role in the Project:
             <br></br>
-            Durante mi tiempo trabajando en la app, me encargué de:
-            <br></br>
-            Resolver problemas técnicos y optimizar funcionalidades para
-            asegurar un rendimiento estable.
-            <br></br>
-            Mejorar la experiencia de usuario con ajustes en la interfaz y
-            flujos de navegación. Refactorizar código para mayor eficiencia y
-            tiempos de carga reducidos.
+            While working on the app, my responsibilities included:
+            <br></br>I contributed to the development of the application by
+            designing and building functional components, resolving technical
+            issues, and optimizing features to ensure stable and efficient
+            performance.
             <br></br>
           </p>
           <div className={style.storesContainer}>
