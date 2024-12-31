@@ -1,0 +1,168 @@
+@font-face {
+  font-family: "jost";
+  src: url("/src/fonts/Jost/Jost-Black.ttf") format("ttf"),
+    url("/src/fonts/Jost/Jost-Black.ttf") format("ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.container {
+  width: 80vw;
+  height: 80vh;
+  border-radius: 24px;
+  position: relative;
+  display: flex;
+  z-index: 1;
+  flex-direction: column;
+  backdrop-filter: blur(10px);
+  background-color: #00000097;
+  transition: transform 1s ease;
+  transform-style: preserve-3d;
+  transform: rotateY(180deg);
+  justify-content: center;
+  align-items: flex-start;
+}
+
+@keyframes flip {
+  0% {
+    transform: rotateY(180deg);
+    visibility: hidden;
+  }
+  100% {
+    transform: rotateY(0deg);
+  }
+}
+
+.flip {
+  animation: flip 1s forwards;
+}
+
+.content {
+  background-color: rgb(250, 235, 215);
+  max-width: 700px;
+  max-height: 500px;
+  height: 90%;
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  margin-left: 20px;
+  animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.imageContent {
+  background-color: #2c2d36;
+  width: 40%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image {
+  object-fit: cover;
+  width: 90%;
+  height: 95%;
+}
+
+.form {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.input {
+  width: 80%;
+  height: 30px;
+  border: none;
+  margin-bottom: 5px;
+  color: #2c2d36;
+}
+
+.input::placeholder {
+  color: #2c2d36cc;
+  padding-left: 5px;
+}
+
+.input:focus,
+textarea:focus {
+  outline: none;
+}
+.textarea {
+  width: 80%;
+  border: none;
+  color: #2c2d36;
+}
+.textarea::placeholder {
+  padding-left: 5px;
+  color: #2c2d36cc;
+}
+
+.buttonSubmit {
+  width: 81%;
+  height: 40px;
+  background-color: #2c2d36;
+  color: #ffffff;
+  font-family: "jost", verdana, sans-serif;
+  letter-spacing: 1px;
+  font-weight: 500;
+  font-size: 16px;
+  margin-top: 10px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border: 2px solid #2c2d36;
+}
+
+.buttonSubmit:hover {
+  background-color: rgb(250, 235, 215);
+  border: 2px solid #2c2d36;
+  color: #2c2d36;
+  cursor: pointer;
+}
+
+.animatedFace {
+  width: 150px;
+  height: 150px;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+.title {
+  font-family: "jost", verdana, sans-serif;
+  color: #2c2d36;
+}
+
+@media (max-width: 600px) {
+  .container {
+    justify-content: center;
+    align-items: center;
+  }
+  .imageContent {
+    display: none;
+  }
+  .content {
+    width: 90%;
+    max-height: 100%;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+  }
+  .form {
+    width: 100%;
+    height: 100%;
+  }
+}

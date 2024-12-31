@@ -92,6 +92,7 @@
   font-size: 13px;
   font-family: "jost", verdana, sans-serif;
   text-align: justify;
+  height: 129px;
 }
 .storesContainer {
   display: flex;

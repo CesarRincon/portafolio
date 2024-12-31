@@ -11,7 +11,6 @@ export const PhoneMockup = () => {
   const handleNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % imagesOlimpica.length);
   };
-  console.log(imagesOlimpica, "cesar");
   const handlePrev = () => {
     setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? imagesOlimpica.length - 1 : prevIndex - 1,
