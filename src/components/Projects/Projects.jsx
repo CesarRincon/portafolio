@@ -2,9 +2,21 @@ import React from "react";
 
 import style from "./Projects.module.css";
 import { PhoneMockup } from "../PhoneMockup/PhoneMockup";
+import iconAppStore from "../../images/appstore.png";
+import iconPlayStore from "../../images/googleplay.png";
 
 export const Projects = (props) => {
   const { flip } = props;
+
+  const handleClick = (store) => {
+    let url;
+    if (store === "appStore") {
+      url = "https://play.google.com/store/apps/details?id=com.tuapp.nombre";
+    } else {
+      url = "";
+    }
+    window.open(url, "_blank"); // Abre en una nueva pestaña
+  };
 
   return (
     <section className={`${style.container} ${flip ? style.flip : ""}`}>
@@ -24,14 +36,32 @@ export const Projects = (props) => {
           </p>
           <div className={style.storesContainer}>
             <img
-              src="https://static.vecteezy.com/system/resources/previews/012/871/364/non_2x/google-play-store-download-button-in-white-colors-download-on-the-google-play-store-free-png.png"
+              src={iconPlayStore}
               alt=""
               width="120px"
+              onClick={() =>
+                window.open(
+                  "https://play.google.com/store/apps/details?id=io.cordova.myapp5c2f9d&hl=en-US",
+                  "_blank",
+                )
+              }
+              style={{
+                cursor: "pointer",
+              }}
             />
             <img
-              src="https://static.vecteezy.com/system/resources/previews/012/871/374/non_2x/app-store-download-button-in-white-colors-download-on-the-apple-app-store-free-png.png"
+              src={iconAppStore}
               alt=""
               width="120px"
+              onClick={() =>
+                window.open(
+                  "https://apps.apple.com/co/app/ol%C3%ADmpica/id1138020304",
+                  "_blank",
+                )
+              }
+              style={{
+                cursor: "pointer",
+              }}
             />
           </div>
         </div>
@@ -39,28 +69,46 @@ export const Projects = (props) => {
           <h4 className={style.titleProject}>La Rebaja</h4>
           <PhoneMockup />
           <p className={style.description}>
-            Mi rol en el proyecto:
+            My Role in the Project:
             <br></br>
-            Durante mi tiempo trabajando en la app, me encargué de:
+            While working on the app, my responsibilities included:
             <br></br>
-            Resolver problemas técnicos y optimizar funcionalidades para
-            asegurar un rendimiento estable.
+            Resolve technical issues and optimize functionalities to ensure
+            stable performance.
             <br></br>
-            Mejorar la experiencia de usuario con ajustes en la interfaz y
-            flujos de navegación. Refactorizar código para mayor eficiencia y
-            tiempos de carga reducidos.
+            Improve user experience with adjustments to the interface and
+            navigation flows. Refactor code for greater efficiency and reduced
+            loading times.
             <br></br>
           </p>
           <div className={style.storesContainer}>
             <img
-              src="https://static.vecteezy.com/system/resources/previews/012/871/364/non_2x/google-play-store-download-button-in-white-colors-download-on-the-google-play-store-free-png.png"
+              src={iconPlayStore}
               alt=""
               width="120px"
+              onClick={() =>
+                window.open(
+                  "https://play.google.com/store/apps/details?id=com.larebaja&hl=es",
+                  "_blank",
+                )
+              }
+              style={{
+                cursor: "pointer",
+              }}
             />
             <img
-              src="https://static.vecteezy.com/system/resources/previews/012/871/374/non_2x/app-store-download-button-in-white-colors-download-on-the-apple-app-store-free-png.png"
+              src={iconAppStore}
               alt=""
               width="120px"
+              onClick={() =>
+                window.open(
+                  "https://apps.apple.com/co/app/la-rebaja/id6450218648",
+                  "_blank",
+                )
+              }
+              style={{
+                cursor: "pointer",
+              }}
             />
           </div>
         </div>
@@ -68,28 +116,46 @@ export const Projects = (props) => {
           <h4 className={style.titleProject}>Corona</h4>
           <PhoneMockup />
           <p className={style.description}>
-            Mi rol en el proyecto:
+            My Role in the Project:
             <br></br>
-            Durante mi tiempo trabajando en la app, me encargué de:
+            While working on the app, my responsibilities included:
             <br></br>
-            Resolver problemas técnicos y optimizar funcionalidades para
-            asegurar un rendimiento estable.
+            Resolve technical issues and optimize functionalities to ensure
+            stable performance.
             <br></br>
-            Mejorar la experiencia de usuario con ajustes en la interfaz y
-            flujos de navegación. Refactorizar código para mayor eficiencia y
-            tiempos de carga reducidos.
+            Improve user experience with adjustments to the interface and
+            navigation flows. Refactor code for greater efficiency and reduced
+            loading times.
             <br></br>
           </p>
           <div className={style.storesContainer}>
             <img
-              src="https://static.vecteezy.com/system/resources/previews/012/871/364/non_2x/google-play-store-download-button-in-white-colors-download-on-the-google-play-store-free-png.png"
+              src={iconPlayStore}
               alt=""
               width="120px"
+              style={{
+                cursor: "pointer",
+              }}
+              onClick={() =>
+                window.open(
+                  "https://play.google.com/store/apps/details?id=com.coronacl.app&hl=es",
+                  "_blank",
+                )
+              }
             />
             <img
-              src="https://static.vecteezy.com/system/resources/previews/012/871/374/non_2x/app-store-download-button-in-white-colors-download-on-the-apple-app-store-free-png.png"
+              src={iconAppStore}
               alt=""
               width="120px"
+              style={{
+                cursor: "pointer",
+              }}
+              onClick={() =>
+                window.open(
+                  "https://apps.apple.com/cl/app/corona-cl/id6448643335",
+                  "_blank",
+                )
+              }
             />
           </div>
         </div>

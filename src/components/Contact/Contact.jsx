@@ -1,6 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import style from "./Contact.module.css";
-import emailjs, { EmailJSResponseStatus } from "@emailjs/browser";
+import emailjs from "@emailjs/browser";
+import persornInPC from "../../images/personaenpc.jpg"
 
 export const Contact = (props) => {
   const { flip, setShowToast } = props;
@@ -70,8 +71,8 @@ export const Contact = (props) => {
       <div className={style.content}>
         <div className={style.imageContent}>
           <img
-            src="https://img.freepik.com/foto-gratis/alto-angulo-joven-empresario-trabajando_23-2148446283.jpg?t=st=1735668748~exp=1735672348~hmac=07e63f39010a6f689c90fab3a55773173c5cc049c51337f8a98df41c56187092&w=360"
-            alt=""
+            src={persornInPC}
+            alt="person"
             className={style.image}
           />
         </div>
@@ -84,7 +85,7 @@ export const Contact = (props) => {
         >
           <img
             src="https://em-content.zobj.net/source/microsoft-teams/337/boy_light-skin-tone_1f466-1f3fb_1f3fb.png"
-            alt="3D Fox"
+            alt="3D face"
             className={style.animatedFace}
             style={{
               ...styles,
