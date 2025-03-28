@@ -6,6 +6,9 @@
   flex-direction: row;
   gap: 10px;
   animation: disappearContainer 10s forwards;
+  height: 100vh;
+  width: 100vw;
+  background-color: #000;
 }
 
 .textName {
@@ -47,7 +50,6 @@
     opacity: 1;
   }
   100% {
-    opacity: 0;
     display: none;
   }
 }

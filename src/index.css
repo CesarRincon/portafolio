@@ -1,15 +1,29 @@
 html {
-  height: 100%;
-}
-
-body {
+  height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0;
-  background-color: black;
-  height: 100%;
 }
+body {
+  margin: 0;
+  /* background-color: black; */
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* 
 
 @media (max-width: 600px) {
   html {
@@ -19,4 +33,4 @@ body {
   body {
     overflow: hidden;
   }
-}
+} */

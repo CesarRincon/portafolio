@@ -1,0 +1,78 @@
+.servicesContainer {
+  position: relative;
+  background-color: #000000;
+  color: #000;
+  z-index: 99999;
+  padding: 20px;
+}
+
+.title {
+  font-family: "Raleway";
+  font-size: 1rem;
+  margin: 0;
+  color: #ffff;
+}
+.titleSecond {
+  font-family: "Bebas Neue";
+  font-size: 2rem;
+  margin: 0;
+  color: #ffff;
+}
+
+.servicesContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.servicesGrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  height: 259px;
+  width: 100%;
+}
+
+.serviceCard {
+  background: white;
+  padding: 10px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  height: 100%;
+  max-height: 232px;
+  width: 100%;
+  max-width: 221px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.serviceTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  font-family: "Raleway";
+}
+
+.serviceDescription {
+  font-size: 1rem;
+  color: #9ca3af;
+  font-family: "Bebas Neue";
+  letter-spacing: 1px;
+}
+
+@media (max-width: 768px) {
+  .servicesContainer {
+    height: auto;
+  }
+  .servicesGrid {
+    height: auto;
+    justify-content: center;
+    flex-direction: column;
+  }
+}
