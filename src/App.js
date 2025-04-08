@@ -8,6 +8,7 @@ import Sections from "./pages/sections/Sections";
 import Hero from "./pages/hero/Hero";
 import { AboutMe } from "./pages/AboutMe/AboutMe";
 import { Services } from "./pages/Services/Services";
+import { Recommendations } from "./pages/Recommendations/Recommendations";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -18,7 +19,10 @@ function App() {
     <div className={styles.container}>
       <Hero id="hero" />
       <Services id="services" />
-      <Sections />
+      <div style={{ overflow: "hidden" }}>
+        <Sections />
+      </div>
+      <Recommendations />
     </div>
   );
 }

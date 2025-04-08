@@ -69,6 +69,7 @@
   width: 65%;
   text-align: justify;
   letter-spacing: 0.5px;
+  font-family: "Raleway";
 }
 
 .storeIcons {
@@ -99,6 +100,7 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
   gap: 50px;
 }
 
@@ -119,6 +121,7 @@
 .detailDescription {
   width: 100%;
   text-align: justify;
+  font-family: "Raleway";
 }
 
 .decorationDiv {
@@ -150,7 +153,7 @@
     display: flex;
     flex-direction: column;
     padding: 10px;
-    width: 90%;
+    width: 100%;
     justify-content: center;
     align-items: center;
   }

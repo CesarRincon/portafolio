@@ -106,7 +106,7 @@ const Sections = (props) => {
   };
 
   const animatePhone = (section) => {
-    // if (!phone.current) return;
+    if (!phone.current) return;
     if (section === "rebaja") {
       splineInstance.current.setVariables({
         olimpica: 0,
@@ -237,6 +237,7 @@ const Sections = (props) => {
           style={{
             height: "100%",
             width: "100%",
+            zIndex: -1,
           }}
           dpr={0.3}
           className={styles.spline}
@@ -318,9 +319,8 @@ const Sections = (props) => {
               }
               transition={{ duration: 1, ease: "easeOut" }}
               className={styles.detailsContainer}
-            > 
-            {
-              section.logros.map((logro, index) => {
+            >
+              {section.logros.map((logro, index) => {
                 return (
                   <div key={index} className={styles.detailRow}>
                     <div
@@ -330,18 +330,14 @@ const Sections = (props) => {
                       }}
                     ></div>
                     <div className={styles.detailText}>
-                      <p className={styles.detailTitle}>
-                        • {logro.title}:
-                      </p>
+                      <p className={styles.detailTitle}>• {logro.title}:</p>
                       <p className={styles.detailDescription}>
                         {logro.description}
                       </p>
                     </div>
                   </div>
                 );
-              }
-              
-            )}
+              })}
               {/* <div className={styles.detailRow}>
                 <div
                   className={styles.decorationDiv}

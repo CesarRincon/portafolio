@@ -1,0 +1,71 @@
+.recommendationsSection {
+  padding: 60px 20px;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+.recommendationsSection h2 {
+  font-size: 2em;
+  margin-bottom: 40px;
+  color: #000;
+}
+
+.recommendationCard {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 16px;
+  padding: 20px;
+  max-width: 1080px;
+  margin: 0 auto 30px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.profileImage {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid #000;
+}
+
+.recommendationContent {
+  text-align: left;
+}
+
+.name {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin: 0;
+  color: #222;
+}
+
+.title {
+  font-size: 0.9em;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.text {
+  font-style: italic;
+  color: #444;
+  margin-bottom: 15px;
+  white-space: pre-line;
+}
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skill {
+  background-color: #e0f0ff;
+  color: #0073b1;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.8em;
+  font-weight: 500;
+}
