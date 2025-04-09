@@ -69,3 +69,16 @@
   font-size: 0.8em;
   font-weight: 500;
 }
+
+@media (max-width: 420px) {
+  .recommendationCard {
+    flex-direction: column;
+    align-items: center;
+  }
+  .name {
+    text-align: center;
+  }
+  .recommendationContent {
+    text-align: center;
+  }
+}

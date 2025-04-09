@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-// import Spline from "@splinetool/react-spline";
 import gsap from "gsap";
 import "@fontsource/montserrat";
 import "@fontsource/bebas-neue";
@@ -30,6 +29,11 @@ const sections = [
           "Participé en la evolución continua de la aplicación, implementando nuevas funcionalidades y mejorando las existentes según las necesidades del negocio. Además, brindé soporte resolviendo errores críticos en producción, asegurando la estabilidad y confiabilidad de la plataforma.",
       },
     ],
+    links: {
+      ios: "https://apps.apple.com/us/app/ol%C3%ADmpica/id1138020304",
+      android:
+        "https://play.google.com/store/apps/details?id=io.cordova.myapp5c2f9d",
+    },
   },
   {
     id: "rebaja",
@@ -55,6 +59,10 @@ const sections = [
           "Integré Google Maps en la aplicación, mejorando la precisión de la ubicación de los usuarios y optimizando la funcionalidad de direcciones. Esto permitió una mejor gestión de entregas y una experiencia más fluida para los clientes que dependían de la geolocalización para sus pedidos.",
       },
     ],
+    links: {
+      ios: "https://apps.apple.com/co/app/la-rebaja/id6450218648",
+      android: "https://play.google.com/store/apps/details?id=com.larebaja",
+    },
   },
   {
     id: "corona",
@@ -75,13 +83,17 @@ const sections = [
           "Mejoré la precisión de la geolocalización para optimizar la disponibilidad de productos según la ubicación del usuario. Esto ayudó a garantizar que los clientes tuvieran acceso a los productos correctos en función de su ubicación, mejorando la eficiencia del catálogo y la gestión de inventario.",
       },
     ],
+    links: {
+      ios: "https://apps.apple.com/cl/app/corona-cl/id6448643335",
+      android:
+        "https://play.google.com/store/apps/details?id=com.coronacl.app&hl=es",
+    },
   },
 ];
 
-const Sections = (props) => {
-  const { setIsLoading } = props;
+const Sections = () => {
   const initialPosition = useRef({
-    x: -454.8677075736407,
+    x: -300.8677075736407,
     y: -119.21544755953607,
     z: 657.9231824679183,
   });
@@ -147,7 +159,7 @@ const Sections = (props) => {
     gsap.to(phone.current.position, {
       x: isSection
         ? initialPosition.current.x
-        : initialPosition.current.x + 550,
+        : initialPosition.current.x + 350,
       duration: 1,
       ease: "power2.out",
     });
@@ -186,23 +198,48 @@ const Sections = (props) => {
         observer.observe(section);
       });
 
-    const hero =
-      document.getElementById("services") || document.getElementById("hero");
-    if (!hero) return;
+    const hero = document.getElementById("hero");
+    const services = document.getElementById("services");
+    const recommendations = document.getElementById("recommendations");
 
-    const observerHero = new IntersectionObserver(
+    const observerOutSections = new IntersectionObserver(
       (entries) => {
-        console.log(entries, "augusto");
-        setIsVisiblePhone(!entries[0].isIntersecting);
+        let isHeroVisible = false;
+        let isServicesVisible = false;
+        let isRecommendationsVisible = false;
+
+        entries.forEach((entry) => {
+          if (entry.target.id === "hero") {
+            isHeroVisible = entry.isIntersecting;
+          }
+
+          if (entry.target.id === "services") {
+            isServicesVisible = entry.isIntersecting;
+          }
+
+          if (entry.target.id === "recommendations") {
+            isRecommendationsVisible = entry.isIntersecting;
+          }
+        });
+
+        const shouldHideSpline =
+          isHeroVisible || isServicesVisible || isRecommendationsVisible;
+        // document.getElementById("splineContainer").style.display =
+        //   shouldHideSpline ? "none" : "block";
+        setIsVisiblePhone(!shouldHideSpline);
       },
-      { threshold: 0.55 },
+      {
+        threshold: 0.77,
+      },
     );
 
-    observerHero.observe(hero);
+    [hero, services, recommendations].forEach((section) =>
+      observerOutSections.observe(section),
+    );
 
     return () => {
       observer.disconnect();
-      observerHero.disconnect();
+      observerOutSections.disconnect();
     };
   }, []);
 
@@ -218,6 +255,7 @@ const Sections = (props) => {
       className={styles.sectionsContainer}
     >
       <motion.div
+        id="splineContainer"
         initial={{ opacity: 0, y: 0 }}
         animate={isVisiblePhone ? { opacity: 1, y: 50 } : { opacity: 0, y: 0 }}
         transition={{ duration: 1, ease: "easeOut" }}
@@ -273,12 +311,8 @@ const Sections = (props) => {
               <motion.p
                 style={{
                   color: section.color,
-                  fontWeight: "600",
-                  fontSize: "7.5rem",
-                  margin: 0,
-                  fontFamily: "Bebas Neue",
                 }}
-                // className={styles.sectionTitle}
+                className={styles.sectionTitle}
               >
                 {section.title}
               </motion.p>
@@ -289,24 +323,14 @@ const Sections = (props) => {
                   alt=""
                   width="120px"
                   className={styles.storeIcon}
-                  onClick={() =>
-                    window.open(
-                      "https://play.google.com/store/apps/details?id=com.coronacl.app&hl=es",
-                      "_blank",
-                    )
-                  }
+                  onClick={() => window.open(section.links.android, "_blank")}
                 />
                 <img
                   src={iconAppStore}
                   alt=""
                   width="120px"
                   className={styles.storeIcon}
-                  onClick={() =>
-                    window.open(
-                      "https://apps.apple.com/cl/app/corona-cl/id6448643335",
-                      "_blank",
-                    )
-                  }
+                  onClick={() => window.open(section.links.ios, "_blank")}
                 />
               </div>
             </motion.div>
@@ -338,44 +362,6 @@ const Sections = (props) => {
                   </div>
                 );
               })}
-              {/* <div className={styles.detailRow}>
-                <div
-                  className={styles.decorationDiv}
-                  style={{
-                    backgroundColor: section.color,
-                  }}
-                ></div>
-                <div className={styles.detailText}>
-                  <p className={styles.detailTitle}>
-                    • Desarrollo y optimización:
-                  </p>
-                  <p className={styles.detailDescription}>
-                    Contribuí activamente al desarrollo de la aplicación,
-                    diseñando y construyendo componentes funcionales clave para
-                    la experiencia del usuario. Me aseguré de optimizar
-                    funciones y mejorar el rendimiento general, garantizando una
-                    ejecución fluida y estable en distintos dispositivos.
-                  </p>
-                </div>
-              </div>
-              <div className={styles.detailRow}>
-                <div
-                  className={styles.decorationDiv}
-                  style={{
-                    backgroundColor: section.color,
-                  }}
-                ></div>
-                <div className={styles.detailText}>
-                  <p className={styles.detailTitle}>• Soporte y evolutivos:</p>
-                  <p className={styles.detailDescription}>
-                    Participé en la evolución continua de la aplicación,
-                    implementando nuevas funcionalidades y mejorando las
-                    existentes según las necesidades del negocio. Además, brindé
-                    soporte resolviendo errores críticos en producción,
-                    asegurando la estabilidad y confiabilidad de la plataforma.
-                  </p>
-                </div>
-              </div> */}
             </motion.div>
           </div>
         );

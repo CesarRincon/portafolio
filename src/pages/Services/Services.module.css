@@ -53,20 +53,21 @@
 }
 
 .serviceTitle {
-  font-size: 1.5rem;
+  font-size: clamp(1rem, 2vw + 0.3rem, 1.5rem);
   font-weight: 600;
   margin-bottom: 10px;
   font-family: "Raleway";
 }
 
 .serviceDescription {
-  font-size: 1rem;
+  font-size: clamp(0.8rem, 2vw + 0.3rem, 1rem);
   color: #9ca3af;
-  font-family: "Bebas Neue";
+  font-family: "Raleway";
+
   letter-spacing: 1px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 680px) {
   .servicesContainer {
     height: auto;
   }
@@ -74,5 +75,12 @@
     height: auto;
     justify-content: center;
     flex-direction: column;
+  }
+}
+
+@media (min-width: 680px) and (max-width: 1080px) {
+  .servicesGrid {
+    gap: 6px;
+    flex-wrap: nowrap;
   }
 }

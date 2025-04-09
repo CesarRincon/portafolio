@@ -9,7 +9,7 @@ import styles from "./Hero.module.css";
 
 const Hero = () => {
   return (
-    <div className={styles.container}>
+    <div className={styles.container} id="hero">
       <div className={styles.hero}>
         <motion.div
           initial={{ opacity: 0, y: -10 }}

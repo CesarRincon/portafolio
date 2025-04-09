@@ -21,7 +21,7 @@ const services = [
 
 export const Services = () => {
   return (
-    <section className={styles.servicesContainer}>
+    <section className={styles.servicesContainer} id="services">
       <motion.div>
         <p className={styles.title}>Lo que hago</p>
         <p className={styles.titleSecond}>Mis servicios</p>

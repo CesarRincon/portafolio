@@ -19,9 +19,7 @@ function App() {
     <div className={styles.container}>
       <Hero id="hero" />
       <Services id="services" />
-      <div style={{ overflow: "hidden" }}>
-        <Sections />
-      </div>
+      <Sections />
       <Recommendations />
     </div>
   );
