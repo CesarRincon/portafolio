@@ -38,7 +38,7 @@ const sections = [
   {
     id: "rebaja",
     title: "La Rebaja",
-    backgroundColor: "#cccc",
+    backgroundColor: "#ccc",
     color: "#BE0111",
     description:
       "La aplicación de La Rebaja es la plataforma digital oficial de una reconocida cadena de droguerías en Colombia. Permite a los usuarios adquirir una amplia variedad de productos, incluyendo medicamentos con y sin prescripción, productos naturales, artículos de aseo personal, alimentos, bebidas, productos de belleza, dermocosmética e incluso licores, todo desde la comodidad de su dispositivo móvil. La app ofrece funcionalidades como entrega a domicilio, localización de la tienda más cercana y acceso a promociones exclusivas. Con una interfaz intuitiva y opciones de pago seguras, La Rebaja App facilita la experiencia de compra en línea, brindando comodidad y eficiencia a sus usuarios.",
@@ -216,7 +216,6 @@ const Sections = () => {
           if (entry.target.id === "services") {
             isServicesVisible = entry.isIntersecting;
           }
-
           if (entry.target.id === "recommendations") {
             isRecommendationsVisible = entry.isIntersecting;
           }
@@ -227,6 +226,11 @@ const Sections = () => {
         // document.getElementById("splineContainer").style.display =
         //   shouldHideSpline ? "none" : "block";
         setIsVisiblePhone(!shouldHideSpline);
+        setIsVisibleSection({
+          olimpica: !shouldHideSpline,
+          rebaja: !shouldHideSpline,
+          corona: !shouldHideSpline,
+        });
       },
       {
         threshold: 0.77,
@@ -245,6 +249,7 @@ const Sections = () => {
 
   return (
     <div
+    id="proyects"
       style={{
         position: "relative",
         width: "100%",

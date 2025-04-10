@@ -6,8 +6,14 @@ import LinkedInIcon from "../../components/Icons/LinkedInIcon";
 import GithubIcon from "../../components/Icons/GithubIcon";
 import GmailIcon from "../../components/Icons/GmailIcon";
 import styles from "./Hero.module.css";
+import Typewriter from "typewriter-effect";
+import cvpdf from "../../document/CV-CesarRincon.pdf";
 
 const Hero = () => {
+  const handleDownload = () => {
+    window.open(cvpdf, "_blank");
+  };
+
   return (
     <div className={styles.container} id="hero">
       <div className={styles.hero}>
@@ -19,7 +25,17 @@ const Hero = () => {
         >
           <p className={styles.firstName}>César</p>
           <p className={styles.lastName}>Rincon</p>
-          <p className={styles.role}>Frontend Developer</p>
+          <Typewriter
+            options={{
+              strings: ["Frontend Developer"],
+              autoStart: true,
+              startDelay: 1200,
+              loop: true,
+              wrapperClassName: styles.role,
+              cursorClassName: styles.role,
+            }}
+          />
+          {/* <p className={styles.role}>Frontend Developer</p> */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
@@ -36,8 +52,19 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: "easeOut", delay: 2.2 }}
           >
-            <button className={styles.button}>Resume</button>
-            <button className={styles.button}>Projects</button>
+            <button className={styles.button} onClick={() => handleDownload()}>
+              Descargar CV
+            </button>
+            <button
+              className={styles.button}
+              onClick={() => {
+                document
+                  .getElementById("proyects")
+                  ?.scrollIntoView({ behavior: "smooth" });
+              }}
+            >
+              Proyectos
+            </button>
           </motion.div>
         </motion.div>
       </div>

@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { RecommendationCard } from "../../components/RecomendationCard/RecomendationCard";
 import style from "./Recommendations.module.css";
+import { motion } from "framer-motion";
 
 const recommendations = [
   {
@@ -34,11 +35,43 @@ const recommendations = [
 ];
 
 export const Recommendations = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const services = document.getElementById("recommendations");
+
+    const observerOutSections = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.target.id === "recommendations") {
+            setIsVisible(entry.isIntersecting);
+          }
+        });
+      },
+      {
+        threshold: 0.33,
+      },
+    );
+
+    [services].forEach((section) => observerOutSections.observe(section));
+  }, []);
+
   return (
     <div className={style.section} id="recommendations">
-      <h2 className={style.sectionTitle}>Colaboraciones destacadas</h2>
+      <motion.h2
+        className={style.sectionTitle}
+        initial={{ opacity: 0, y: 40 }}
+        animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+        transition={{ duration: 0.1 }}
+      >
+        Colaboraciones destacadas
+      </motion.h2>
       {recommendations.map((recommendation, index) => (
-        <RecommendationCard key={recommendation.name} {...recommendation} />
+        <RecommendationCard
+          key={recommendation.name}
+          {...recommendation}
+          index={index}
+        />
       ))}
     </div>
   );

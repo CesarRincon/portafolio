@@ -83,42 +83,34 @@ export const Contact = (props) => {
           id="form"
           className={style.form}
         >
-          <img
-            src="https://em-content.zobj.net/source/microsoft-teams/337/boy_light-skin-tone_1f466-1f3fb_1f3fb.png"
-            alt="3D face"
-            className={style.animatedFace}
-            style={{
-              ...styles,
-            }}
-          />
-          <h2 className={style.title}>Write to me</h2>
+          <h2 className={style.title}>Escribeme</h2>
           <input
             className={style.input}
             type="text"
-            placeholder="Name"
+            placeholder="Nombre"
             name="from_name"
           />
           <input
             className={style.input}
             type="text"
-            placeholder="Subject"
+            placeholder="Asunto"
             name="user_subject"
           />
           <input
             className={style.input}
             type="text"
-            placeholder="Email"
+            placeholder="Correo"
             name="user_email"
           />
           <textarea
             className={style.textarea}
-            name="message"
+            name="Mensaje"
             id=""
             rows="5"
-            placeholder="Write to message"
+            placeholder="Escribe un mensaje"
           />
           <button className={style.buttonSubmit}>
-            {isLoading ? "Sending..." : "Send"}
+            {isLoading ? "Enviando..." : "Enviar"}
           </button>
         </form>
       </div>
