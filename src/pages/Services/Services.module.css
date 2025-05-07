@@ -1,0 +1,92 @@
+.servicesContainer {
+  position: relative;
+  background-color: #1d1f20;
+  color: #000;
+  z-index: 99999;
+  padding: 20px;
+  backface-visibility: hidden;
+}
+
+.title {
+  font-family: "Raleway";
+  font-size: 1rem;
+  margin: 0;
+  color: #fff;
+}
+.titleSecond {
+  font-family: "Bebas Neue";
+  font-size: 2rem;
+  margin: 0;
+  color: #fff;
+}
+
+.servicesContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.servicesGrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  height: 259px;
+  width: 100%;
+}
+
+.serviceCard {
+  background: white;
+  padding: 10px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  height: 100%;
+  max-height: 232px;
+  width: 100%;
+  max-width: 221px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.serviceTitle {
+  font-size: clamp(1rem, 2vw + 0.3rem, 1rem);
+  font-weight: 600;
+  margin-bottom: 10px;
+  font-family: "Raleway";
+  margin: 0;
+}
+
+.serviceDescription {
+  font-size: clamp(0.8rem, 2vw + 0.3rem, 0.8rem);
+  color: #9ca3af;
+  font-family: "Raleway";
+  margin: 10px;
+  letter-spacing: 1px;
+}
+
+.image {
+  width: 60px;
+}
+
+@media (max-width: 680px) {
+  .servicesContainer {
+    height: auto;
+  }
+  .servicesGrid {
+    height: auto;
+    justify-content: center;
+    flex-direction: column;
+  }
+}
+
+@media (min-width: 680px) and (max-width: 1080px) {
+  .servicesGrid {
+    gap: 6px;
+    flex-wrap: nowrap;
+  }
+}

@@ -1,36 +1,30 @@
 import { useState } from "react";
 import styles from "./App.module.css";
 import Splashscreen from "./components/SplashScreen/Splashscreen";
-import { RenderPage } from "./components/renderPage/RenderPage";
-import Navbar from "./components/Navbar/Navbar";
-import { Toast } from "./components/Toast/Toast";
+import "@fontsource/montserrat";
+import "@fontsource/bebas-neue";
+import "@fontsource/raleway";
+import Sections from "./pages/sections/Sections";
+import Hero from "./pages/hero/Hero";
+import { Services } from "./pages/Services/Services";
+import { Recommendations } from "./pages/Recommendations/Recommendations";
+import { Contact } from "./components/Contact/Contact";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
-  const [screen, setScreen] = useState("home");
-  const [flip, setFlip] = useState(true);
-  const [showToast, setShowToast] = useState({
-    message: "The message has been sent successfully!",
-    show: false,
-    type: "success",
-  });
 
-  const props = { flip, screen, setShowToast };
-
-  return (
-    <>
-      {isLoading ? (
-        <Splashscreen setIsLoading={setIsLoading} />
-      ) : (
-        <div className={styles.container}>
-          <Navbar setFlip={setFlip} setScreen={setScreen} screen={screen} />
-          {RenderPage(props)}
-
-          <Toast showToast={showToast} setShowToast={setShowToast} />
-        </div>
-      )}
-    </>
+  return isLoading ? (
+    <Splashscreen setIsLoading={setIsLoading} />
+  ) : (
+    <div className={styles.container}>
+      <Hero />
+      <Services  />
+      <Sections />
+      <Recommendations />
+      <Contact />
+    </div>
   );
 }
 
 export default App;
+

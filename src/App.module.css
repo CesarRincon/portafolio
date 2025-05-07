@@ -1,17 +1,12 @@
 .container {
   height: 100vh;
-  width: 100vw;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  background-image: url(./images/background.jpg);
-  background-size: cover;
-  gap: 10px;
-  perspective: 1200px;
-  overflow: hidden;
+  width: 100%;
+  /* max-width: 1200px; */
+  margin: 0;
+  padding: 0;
+  flex-direction: "column";
 }
-
+/* 
 .containerContent {
   height: 100vh;
   width: 100vw;
@@ -27,4 +22,4 @@
     justify-content: start;
     padding-top: 80px;
   }
-}
+} */

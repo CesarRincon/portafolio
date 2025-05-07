@@ -1,0 +1,223 @@
+.sectionsContainer {
+  position: relative;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  font-family: "Bebas Neue";
+}
+
+.splineContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 720px;
+  z-index: 1;
+}
+.sectionRight {
+  height: 640px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: end;
+  padding-right: 50px;
+  align-items: center;
+  color: #000;
+}
+
+.sectionLeft {
+  height: 640px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  padding-left: 50px;
+  justify-content: end;
+  align-items: center;
+}
+
+.sectionContent {
+  width: 50%;
+}
+
+.sectionContentRight {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  width: 50%;
+  z-index: 99999;
+  color: #000;
+}
+
+.sectionContentLeft {
+  padding-left: 50px;
+  width: 50%;
+  z-index: 99999;
+  color: #000;
+}
+
+.sectionTitle {
+  font-weight: 600;
+  font-size: 7.5rem;
+  margin: 0;
+  font-family: "Bebas Neue";
+  /* text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff,
+    1px 1px 0 #fff; */
+}
+
+.sectionText {
+  width: 65%;
+  text-align: justify;
+  letter-spacing: 0.5px;
+  font-family: "Raleway";
+  /* color: #fff; */
+}
+
+.storeIcons {
+  width: 65%;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 20px;
+}
+
+.storeIcon {
+  cursor: pointer;
+  width: 120px;
+}
+
+.detailsContainer {
+  width: 70%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.5px;
+  gap: 10px;
+}
+
+.detailRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+
+.detailBar {
+  height: 180px;
+  width: 30px;
+}
+
+.detailText {
+  width: 50%;
+}
+
+.detailTitle {
+  width: 100%;
+  text-align: left;
+}
+
+.detailDescription {
+  width: 100%;
+  text-align: justify;
+  font-family: "Raleway";
+}
+
+.decorationDiv {
+  height: 180px;
+  width: 30px;
+}
+
+@media (max-width: 768px) {
+  .sectionLeft {
+    flex-direction: column;
+    justify-content: center;
+    padding: 0;
+    height: auto;
+    padding-bottom: 10px;
+  }
+  .sectionText {
+    width: 90%;
+  }
+
+  .sectionRight {
+    flex-direction: column;
+    justify-content: center;
+    padding: 0;
+    height: auto;
+    padding-bottom: 10px;
+  }
+
+  .sectionContentLeft {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .detailRow {
+    gap: 10px;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .detailsContainer {
+    width: 90%;
+  }
+
+  .detailText {
+    width: 100%;
+  }
+
+  .detailTitle {
+    margin: 0;
+  }
+  .spline {
+    display: none;
+  }
+  .sectionContentRight {
+    align-items: center;
+    padding: 10px;
+    width: 100%;
+  }
+  .storeIcons {
+    margin-top: 0px;
+    margin-bottom: 10px;
+    z-index: 999999;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1080px) {
+  .sectionText {
+    width: 100%;
+  }
+  .sectionContentRight {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .detailText {
+    width: 70%;
+    font-size: 0.9rem;
+  }
+
+  .sectionContentLeft {
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .spline {
+    display: none;
+  }
+  .sectionTitle {
+    font-size: 6.5rem;
+  }
+}
