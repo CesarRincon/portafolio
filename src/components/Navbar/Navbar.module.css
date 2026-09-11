@@ -1,74 +1,329 @@
-.navbar {
-  display: flex;
-  flex-direction: column;
-  width: 50px;
-  height: 250px;
-  border-radius: 50px;
-  backdrop-filter: blur(10px);
-  background-color: #00000097;
+.header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 100;
+  transition: background var(--dur) var(--ease-out), border-color var(--dur) var(--ease-out),
+    backdrop-filter var(--dur) var(--ease-out);
+  border-bottom: 1px solid transparent;
 }
 
-.containerItems {
-  z-index: 1;
+.scrolled {
+  background: var(--header-bg);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  border-bottom-color: var(--line);
 }
 
-.containerItems {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+.inner {
+  width: var(--shell);
+  margin-inline: auto;
+  height: 72px;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
-  height: 100%;
+  justify-content: space-between;
+  gap: 24px;
 }
 
-.containerItems li {
-  width: 80%;
-  height: 40px;
-  border-radius: 50%;
+/* --- Marca ---------------------------------------------------------------- */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  /* El monograma mide 34px por diseño; el área táctil del enlace no. */
+  min-height: 44px;
+  min-width: 44px;
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+
+.brandMark {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: var(--gradient-accent);
+  color: var(--on-accent);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  transition: transform var(--dur) var(--ease-out);
+}
+
+.brand:hover .brandMark {
+  transform: rotate(-8deg) scale(1.06);
+}
+
+.brandText {
+  font-family: var(--font-cine);
+  font-size: 20px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 400;
+  color: var(--text);
+}
+
+/* --- Navegación ----------------------------------------------------------- */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.link {
+  position: relative;
+  /* Área de acierto de 44px de alto sin engordar la píldora visualmente. */
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 7px 12px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: color var(--dur-fast) var(--ease-out);
+  white-space: nowrap;
+}
+
+.link:hover {
+  color: var(--text);
+}
+
+.linkActive {
+  color: var(--text);
+}
+
+.link::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 9px;
+  height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 0.6s var(--ease-cine);
+}
+
+.link:hover::after,
+.linkActive::after {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+@keyframes pillIn {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* --- Acciones ------------------------------------------------------------- */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.langToggle {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 7px;
+  min-height: 44px;
+  padding: 7px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-mono);
+  font-size: var(--step-micro);
+  letter-spacing: 0.08em;
+  transition: border-color var(--dur-fast) var(--ease-out),
+    background var(--dur-fast) var(--ease-out);
+}
+
+.langToggle:hover {
+  border-color: var(--accent-line);
+  background: var(--accent-soft);
+}
+
+.langOn {
+  color: var(--accent-ink);
+}
+
+.langOff {
+  color: var(--text-faint);
+}
+
+.langSep {
+  width: 1px;
+  height: 11px;
+  background: var(--line-strong);
+}
+
+/* --- Burger --------------------------------------------------------------- */
+.burger {
+  display: none;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
   position: relative;
 }
 
-.itemsMenu {
-  background-color: rgb(250, 235, 215);
-}
-
-.containerItems li:hover {
-  backdrop-filter: blur(10px);
-}
-
-.containerItems li::before {
-  content: attr(data-text);
+/* Centrados respecto al botón, para que el área táctil pueda crecer sin
+   descolocar las barras. */
+.burger span {
   position: absolute;
-  bottom: -5px;
-  right: -15px;
-  font-size: 12px;
-  background-color: #ffffff;
-  padding: 0 5px;
-  border-radius: 4px;
-  visibility: hidden;
-  transition: opacity 1.5s ease;
+  left: 50%;
+  translate: -50% 0;
+  width: 18px;
+  height: 1.5px;
+  background: var(--text);
+  transition: transform var(--dur) var(--ease-out), opacity var(--dur-fast) linear;
+}
+
+.burger span:first-child {
+  top: calc(50% - 3px);
+}
+
+.burger span:last-child {
+  top: calc(50% + 3px);
+}
+
+.burgerOpen span:first-child {
+  transform: translateY(3px) rotate(45deg);
+}
+
+.burgerOpen span:last-child {
+  transform: translateY(-3px) rotate(-45deg);
+}
+
+/* --- Barra de progreso ---------------------------------------------------- */
+.progress {
+  height: 2px;
+  background: var(--gradient-accent);
+  transform-origin: left center;
+  transform: scaleX(0);
+}
+
+/* --- Menú móvil ----------------------------------------------------------- */
+.mobile {
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  background: var(--glass-strong);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  display: grid;
+  place-items: center;
   opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--dur) var(--ease-out);
 }
 
-.containerItems li:hover::before {
-  visibility: visible;
+.mobileOpen {
   opacity: 1;
+  pointer-events: auto;
 }
 
-@media (max-width: 600px) {
-  .navbar {
-    width: 80%;
-    height: 50px;
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 82vw;
+}
+
+.mobileLink {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: 14px 4px;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--font-cine);
+  font-size: clamp(2.6rem, 11vw, 4rem);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-weight: 400;
+  color: var(--text-soft);
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out),
+    color var(--dur-fast) var(--ease-out);
+}
+
+.mobileOpen .mobileLink {
+  opacity: 1;
+  transform: none;
+}
+
+.mobileLinkActive {
+  color: var(--accent-ink);
+}
+
+.mobileIndex {
+  font-family: var(--font-mono);
+  font-size: var(--step-micro);
+  color: var(--text-faint);
+  letter-spacing: 0.1em;
+}
+
+@media (max-width: 940px) {
+  .nav {
+    display: none;
   }
-  .containerItems {
-    flex-direction: row;
+
+  .burger {
+    display: block;
   }
-  .containerItems li {
-    width: 40px;
+
+  .brandText {
+    display: none;
   }
+}
+
+/* En táctil todo lo pulsable llega a 44px, aunque el dibujo sea menor. */
+@media (pointer: coarse) {
+  .brand,
+  .burger,
+  .langToggle {
+    min-height: 44px;
+  }
+
+  .brand,
+  .burger {
+    min-width: 44px;
+  }
+
+  .burger {
+    display: grid;
+    place-items: center;
+  }
+}
+
+/* --- Toggle de tema -------------------------------------------------------- */
+
+.themeToggle {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  flex: none;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  color: var(--text-muted);
+  font-size: 16px;
+  transition: border-color var(--dur-fast) var(--ease-out),
+    background var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
+}
+
+.themeToggle:hover {
+  border-color: var(--accent-line);
+  background: var(--bg-card-hover);
+  color: var(--accent-ink);
 }

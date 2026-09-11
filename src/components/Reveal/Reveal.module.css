@@ -1,0 +1,64 @@
+.reveal {
+  opacity: 0;
+  transition:
+    opacity 0.8s var(--ease-out),
+    transform 0.8s var(--ease-out);
+  /*
+   * `will-change` solo mientras el elemento espera su turno. Antes estaba
+   * declarado sin condición y el navegador sostenía 59 capas de compositor
+   * durante toda la vida de la página, incluidas las ya reveladas.
+   */
+  will-change: opacity, transform;
+}
+
+.up {
+  transform: translate3d(0, 34px, 0);
+}
+
+.left {
+  transform: translate3d(-40px, 0, 0);
+}
+
+.right {
+  transform: translate3d(40px, 0, 0);
+}
+
+.scale {
+  transform: scale(0.94);
+}
+
+/*
+ * El recorte va en el hijo, nunca en el elemento observado: un clip-path que
+ * oculta el 100% deja el área de intersección en cero y el IntersectionObserver
+ * jamás dispararía.
+ */
+.mask > * {
+  display: block;
+  clip-path: inset(0 0 100% 0);
+  transform: translate3d(0, 18px, 0);
+  transition:
+    clip-path 0.9s var(--ease-out),
+    transform 0.9s var(--ease-out);
+}
+
+.mask.visible > * {
+  clip-path: inset(0 0 0 0);
+  transform: none;
+}
+
+.visible {
+  opacity: 1;
+  transform: none;
+  /* Revelado: se libera la capa de compositor, ya no hay nada que animar. */
+  will-change: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .mask > * {
+    opacity: 1;
+    transform: none;
+    clip-path: none;
+    transition: none;
+  }
+}

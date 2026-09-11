@@ -1,0 +1,176 @@
+/* ==========================================================================
+   Design tokens — una sola fuente de verdad para color, tipografía y ritmo.
+   ========================================================================== */
+
+/*
+ * El sitio es oscuro por defecto: esa es su identidad. El tema claro es una
+ * elección explícita del visitante (se guarda en localStorage y se refleja en
+ * `data-theme` sobre <html>), no una consecuencia del sistema operativo.
+ */
+:root {
+  /* --- Color ------------------------------------------------------------ */
+  --bg: #0a0908;
+  --bg-elevated: #121110;
+  --bg-card: rgba(255, 255, 255, 0.028);
+  --bg-card-hover: rgba(255, 255, 255, 0.055);
+
+  /* Velo sutil para inputs y superficies internas. */
+  --surface-1: rgba(255, 255, 255, 0.02);
+  --surface-2: rgba(255, 255, 255, 0.04);
+  --scroll-thumb: rgba(245, 239, 230, 0.14);
+
+  /*
+   * Superficies de vidrio (header, badges flotantes, toast, controles) y velos
+   * sobre fotografía. El velo se declara como canal RGB suelto para poder
+   * variar la alfa en cada sitio sin duplicar el color en los dos temas.
+   */
+  --glass: rgba(18, 17, 16, 0.82);
+  --glass-strong: rgba(10, 9, 8, 0.97);
+  --header-bg: rgba(10, 9, 8, 0.72);
+  --scrim-rgb: 10, 9, 8;
+
+  --line: rgba(245, 239, 230, 0.1);
+  --line-strong: rgba(245, 239, 230, 0.2);
+
+  /*
+   * Opacidades calibradas contra --bg para cumplir WCAG AA sobre el fondo:
+   * soft 12.8:1 · muted 7.4:1 · faint 4.6:1 (medido con la skill ui-pro).
+   */
+  --text: #f5efe6;
+  --text-soft: rgba(245, 239, 230, 0.82);
+  --text-muted: rgba(245, 239, 230, 0.62);
+  --text-faint: rgba(245, 239, 230, 0.52);
+
+  --accent: #f5b544;
+  --accent-2: #ff7a59;
+  --accent-soft: rgba(245, 181, 68, 0.14);
+  --accent-line: rgba(245, 181, 68, 0.34);
+
+  /*
+   * `--accent` es decorativo (fondos, bordes, gradientes). Para TEXTO se usa
+   * `--accent-ink`: sobre fondo claro el ámbar puro solo alcanza 1.9:1, así
+   * que el tema claro lo sustituye por una versión tostada que sí pasa AA.
+   */
+  --accent-ink: #f5b544;
+  /* Tinta sobre superficies de acento (botón primario, monograma). */
+  --on-accent: #0a0908;
+
+  --gradient-accent: linear-gradient(120deg, var(--accent), var(--accent-2));
+  --gradient-text: linear-gradient(
+    100deg,
+    var(--text) 0%,
+    var(--text) 40%,
+    var(--accent) 70%,
+    var(--accent-2) 100%
+  );
+
+  --success: #4ade80;
+  --danger: #f87171;
+
+  /* --- Tipografía ------------------------------------------------------- */
+  --font-display: "Montserrat", system-ui, sans-serif;
+  --font-body: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    system-ui, sans-serif;
+  --font-mono: "SFMono-Regular", ui-monospace, "JetBrains Mono", Menlo, monospace;
+  /* Display condensada para titulares gigantes: siempre en mayúsculas. */
+  --font-cine: "Bebas Neue", "Montserrat", Impact, sans-serif;
+  --step-giant: clamp(4.4rem, 15.5vw, 15rem);
+  --step-cine: clamp(2.8rem, 7vw, 6.4rem);
+
+  /* Escala fluida. `micro` es el suelo legible: nada de texto por debajo. */
+  --step-micro: 0.78rem; /* 12.5px */
+  --step--1: clamp(0.82rem, 0.78rem + 0.2vw, 0.9rem);
+  --step-0: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem);
+  --step-2: clamp(1.45rem, 1.25rem + 1vw, 2rem);
+  --step-3: clamp(1.9rem, 1.5rem + 2vw, 3rem);
+  --step-4: clamp(2.6rem, 1.8rem + 4vw, 5rem);
+  --step-5: clamp(2.2rem, 1.1rem + 3.9vw, 4.2rem);
+
+  /* --- Ritmo y forma ---------------------------------------------------- */
+  --space-section: clamp(5rem, 9vw, 9rem);
+  --radius-sm: 8px;
+  --radius: 14px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+
+  --shell: min(1220px, 92vw);
+
+  /* --- Movimiento ------------------------------------------------------- */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-cine: cubic-bezier(0.32, 0.72, 0, 1);
+  --dur-fast: 0.22s;
+  --dur: 0.45s;
+  --dur-slow: 0.9s;
+
+  --shadow-soft: 0 24px 60px -30px rgba(0, 0, 0, 0.9);
+  --shadow-lift: 0 40px 90px -40px rgba(0, 0, 0, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0.01ms;
+    --dur: 0.01ms;
+    --dur-slow: 0.01ms;
+  }
+}
+
+/* ==========================================================================
+   Tema claro — se activa con data-theme="light" en <html>.
+   No es una inversión mecánica del oscuro: el fondo es blanco, pero los
+   acentos se tuestan para conservar el contraste y la calidez de la marca.
+   ========================================================================== */
+
+:root[data-theme="light"] {
+  --bg: #ffffff;
+  --bg-elevated: #ffffff;
+  --bg-card: rgba(20, 18, 15, 0.032);
+  --bg-card-hover: rgba(20, 18, 15, 0.058);
+
+  --surface-1: rgba(20, 18, 15, 0.022);
+  --surface-2: rgba(20, 18, 15, 0.042);
+  --scroll-thumb: rgba(20, 18, 15, 0.2);
+
+  --glass: rgba(255, 255, 255, 0.86);
+  --glass-strong: rgba(255, 255, 255, 0.97);
+  --header-bg: rgba(255, 255, 255, 0.78);
+  --scrim-rgb: 255, 255, 255;
+
+  --line: rgba(20, 18, 15, 0.12);
+  --line-strong: rgba(20, 18, 15, 0.24);
+
+  /*
+   * Contraste medido sobre #ffffff: text 17.6:1 · soft 12.1:1 · muted 7.1:1 ·
+   * faint 5.2:1. Mismos escalones semánticos que el oscuro, así que ningún
+   * componente necesita saber en qué tema está.
+   */
+  --text: #14120f;
+  --text-soft: rgba(20, 18, 15, 0.8);
+  --text-muted: rgba(20, 18, 15, 0.62);
+  --text-faint: rgba(20, 18, 15, 0.52);
+
+  /* El ámbar se conserva para superficies decorativas... */
+  --accent: #e09b1e;
+  --accent-2: #e35d38;
+  --accent-soft: rgba(224, 155, 30, 0.16);
+  --accent-line: rgba(224, 155, 30, 0.45);
+
+  /* ...pero el texto de acento usa una tinta tostada: 5.1:1 sobre blanco. */
+  --accent-ink: #9a5b00;
+
+  --gradient-text: linear-gradient(
+    100deg,
+    var(--text) 0%,
+    var(--text) 40%,
+    #b8730a 70%,
+    #c2472a 100%
+  );
+
+  --success: #15803d;
+  --danger: #c0392b;
+
+  /* En claro una sombra negra ensucia: se aligera y se acorta. */
+  --shadow-soft: 0 18px 44px -28px rgba(20, 18, 15, 0.38);
+  --shadow-lift: 0 30px 70px -38px rgba(20, 18, 15, 0.45);
+}

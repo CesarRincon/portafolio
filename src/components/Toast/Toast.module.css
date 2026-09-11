@@ -1,50 +1,73 @@
-.containerToast {
-  position: absolute;
-  right: 20px;
-  top: 10%;
-  background-color: rgb(48, 108, 68);
-  box-shadow: rgba(0, 0, 0, 0.16) 0px;
-  color: rgb(222, 222, 222);
-  font-size: 16px;
-  padding: 0 10px;
-  border-radius: 12px;
-  z-index: 1000;
-  transform: translateX(100%);
-  transition: transform 0.5s ease, opacity 0.5s ease;
-  animation: slideIn 1s ease-out forwards;
-  cursor: pointer;
+.toast {
+  position: fixed;
+  z-index: 200;
+  left: 50%;
+  bottom: 28px;
+  translate: -50% 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: min(440px, 90vw);
+  padding: 13px 14px 13px 16px;
+  border-radius: var(--radius-pill);
+  background: var(--glass);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid var(--line-strong);
+  box-shadow: var(--shadow-lift);
+  animation: toastIn 0.45s var(--ease-out);
 }
 
-.containerToastError {
-  position: absolute;
-  right: 20px;
-  top: 10%;
-  background-color: rgb(163, 51, 51);
-  box-shadow: rgba(0, 0, 0, 0.16) 0px;
-  color: rgb(222, 222, 222);
-  font-size: 16px;
-  padding: 0 10px;
-  border-radius: 12px;
-  z-index: 1000;
-  transform: translateX(100%);
-  transition: transform 0.5s ease, opacity 0.5s ease;
-  animation: slideIn 1s ease-out forwards;
-  cursor: pointer;
-}
-
-@keyframes slideIn {
-  0% {
+@keyframes toastIn {
+  from {
     opacity: 0;
-    transform: translateX(100%);
+    translate: -50% 24px;
   }
-  100% {
+  to {
     opacity: 1;
-    transform: translateX(0);
+    translate: -50% 0;
   }
 }
 
-@media (max-width: 600px) {
-  .containerToast {
-    top: 10%;
-  }
+.icon {
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.success .icon {
+  color: var(--success);
+}
+
+.error .icon {
+  color: var(--danger);
+}
+
+.success {
+  border-color: rgba(74, 222, 128, 0.35);
+}
+
+.error {
+  border-color: rgba(248, 113, 113, 0.35);
+}
+
+.message {
+  font-size: 14px;
+  color: var(--text);
+}
+
+.close {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  color: var(--text-muted);
+  transition: background var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
+}
+
+.close:hover {
+  background: var(--bg-card-hover);
+  color: var(--text);
 }

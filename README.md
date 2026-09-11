@@ -1,70 +1,82 @@
-# Getting Started with Create React App
+# Portafolio — César Rincón
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Portafolio personal de una sola página, bilingüe (ES/EN), construido con React y
+CSS Modules sobre Create React App. Sin librerías de animación: todo el
+movimiento es CSS + `IntersectionObserver`.
 
-## Available Scripts
+## Estructura
 
-In the project directory, you can run:
+```
+src/
+├── App.js                  # composición de la página y estado global mínimo
+├── index.css               # reset, utilidades y carga de tokens/fuentes
+├── styles/
+│   ├── tokens.css          # color, tipografía, ritmo y curvas de animación
+│   └── fonts.css           # @font-face de Jost (local, sin CDN)
+├── i18n/
+│   ├── content.js          # TODO el copy del sitio, en español e inglés
+│   └── LanguageContext.jsx # provider + `useLang()`, persiste en localStorage
+├── data/
+│   ├── projects.js         # proyectos destacados y apps publicadas
+│   └── tech.js             # stack agrupado (frontend / backend / tooling)
+├── hooks/
+│   ├── useReveal.js        # revela un elemento al entrar en el viewport
+│   └── useActiveSection.js # scroll-spy del navbar
+├── components/             # piezas reutilizables (Navbar, Reveal, mockups…)
+└── sections/               # Hero, About, Work, Stack, Experience, Contact
+```
 
-### `npm start`
+## Cómo trabajar con él
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+| Necesito…                        | Toco…                                                        |
+| -------------------------------- | ------------------------------------------------------------ |
+| Cambiar cualquier texto          | `src/i18n/content.js` (siempre en los dos idiomas)            |
+| Añadir un proyecto web           | `src/data/projects.js` → `featuredProjects` + captura en `src/images/projects/` |
+| Añadir una app de tiendas        | `src/data/projects.js` → `appProjects`                        |
+| Añadir una tecnología            | `src/data/tech.js` (`mono: true` si el logo es negro plano)   |
+| Cambiar la paleta o el ritmo     | `src/styles/tokens.css`                                       |
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Las capturas de los sitios en producción se generan con Chrome headless:
 
-### `npm test`
+```bash
+"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
+  --headless=new --hide-scrollbars --virtual-time-budget=9000 \
+  --window-size=1440,900 --screenshot=salida.png https://tu-sitio.com
+sips -s format jpeg -s formatOptions 80 -Z 1400 salida.png --out destino.jpg
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Comandos
 
-### `npm run build`
+```bash
+npm start    # desarrollo en http://localhost:3000
+npm test     # tests con Jest + Testing Library
+npm run build # build de producción en /build
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Auditoría visual
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Con el servidor levantado, la skill `ui-pro` abre el sitio en un Chromium real,
+lo fotografía en 390/820/1440 px y mide contraste WCAG, áreas táctiles,
+desbordes, tamaños de fuente y foco de teclado:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+node ~/.claude/skills/ui-pro/scripts/audit.mjs http://localhost:3000
+```
 
-### `npm run eject`
+Deja las capturas y `findings.json` en `.ui-audit/`. Correr esto antes de
+desplegar evita regresiones de accesibilidad.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Excepción conocida y deliberada: la URL en la barra del `BrowserMockup` va a
+13px porque imita el chrome de un navegador, donde ese texto es pequeño.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Detalles de implementación
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **Animación sin dependencias.** `<Reveal>` envuelve cualquier bloque y lo
+  anima al entrar en pantalla. Ojo: la variante `mask` aplica el `clip-path` al
+  hijo, nunca al elemento observado — un `clip-path` que oculta el 100% deja el
+  área de intersección en cero y el observer no dispararía nunca.
+- **`prefers-reduced-motion`** se respeta en todo: la cortina de entrada se
+  salta, la cinta del stack se detiene y los reveals aparecen directamente.
+- **Enlaces directos.** Entrar con `#work`, `#contact`, etc. salta la cortina de
+  carga y ancla en la sección.
+- **Formulario** vía EmailJS, con validación de campos y de formato de correo.

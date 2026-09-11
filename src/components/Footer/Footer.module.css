@@ -1,0 +1,74 @@
+.footer {
+  border-top: 1px solid var(--line);
+  padding-block: 34px;
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.built {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.socials {
+  display: flex;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.socials a {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  color: var(--text-muted);
+  transition: color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+}
+
+.socials a:hover {
+  color: var(--accent-ink);
+  border-color: var(--accent-line);
+}
+
+.top {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  /* Área táctil cómoda sin cambiar el aspecto del enlace. */
+  min-height: 44px;
+  padding-inline: 4px;
+  font-family: var(--font-mono);
+  font-size: var(--step-micro);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.top:hover {
+  color: var(--accent-ink);
+}
+
+.top svg {
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+.top:hover svg {
+  transform: translateY(-3px);
+}

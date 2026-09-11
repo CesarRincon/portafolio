@@ -1,0 +1,239 @@
+.section {
+  position: relative;
+  padding: clamp(96px, 12vw, 170px) 0;
+  background: var(--bg);
+}
+
+/* --- Paneles -------------------------------------------------------------- */
+.panels {
+  display: flex;
+  gap: 12px;
+  height: min(600px, 78vh);
+  min-height: 460px;
+}
+
+.panel {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--line);
+  background: var(--bg-elevated);
+  cursor: pointer;
+  transition: flex 1s var(--ease-cine), border-color 0.6s var(--ease-out);
+  will-change: flex;
+}
+
+.panelActive {
+  flex: 3.1;
+  border-color: var(--accent-line);
+}
+
+.panelImg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(0.8) brightness(0.35) contrast(1.15);
+  transform: scale(1.12);
+  transition: transform 1.6s var(--ease-cine), filter 1s var(--ease-out);
+}
+
+.panelActive .panelImg {
+  transform: scale(1.02);
+  filter: grayscale(0.4) brightness(0.45) contrast(1.1);
+}
+
+.panelScrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(10, 9, 8, 0.1) 0%, rgba(10, 9, 8, 0.35) 45%, rgba(10, 9, 8, 0.92) 100%),
+    radial-gradient(ellipse 60% 40% at 50% 100%, rgba(245, 181, 68, 0.16), transparent 70%);
+  transition: opacity 0.8s var(--ease-out);
+}
+
+/* --- Cabecera del panel --------------------------------------------------- */
+.panelHead {
+  position: absolute;
+  left: 24px;
+  bottom: 24px;
+  right: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  text-align: left;
+  color: #f5efe6;
+  z-index: 2;
+  transition: transform 0.9s var(--ease-cine);
+}
+
+.panelActive .panelHead {
+  transform: translateY(calc(-1 * var(--chips-height, 0px)));
+}
+
+.panelTitle {
+  font-family: var(--font-cine);
+  font-size: clamp(1.9rem, 3vw, 2.8rem);
+  line-height: 0.95;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transform-origin: left bottom;
+  transition: transform 0.9s var(--ease-cine);
+}
+
+/* En un panel cerrado la cabecera ocupa toda la altura y el título se pone de canto. */
+.panel:not(.panelActive) .panelHead {
+  left: 0;
+  right: 0;
+  top: 24px;
+  bottom: 24px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.panel:not(.panelActive) .panelTitle {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  transform-origin: center;
+  font-size: clamp(1.4rem, 2.2vw, 2rem);
+}
+
+.panelCount {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(245, 239, 230, 0.6);
+  transition: opacity 0.4s var(--ease-out);
+}
+
+.panel:not(.panelActive) .panelCount {
+  opacity: 0;
+  position: absolute;
+}
+
+/* --- Chips ---------------------------------------------------------------- */
+.chips {
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  bottom: 24px;
+  z-index: 2;
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s var(--ease-out);
+}
+
+.panelActive .chips {
+  opacity: 1;
+  pointer-events: auto;
+  transition-delay: 0.35s;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px 8px 9px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(245, 239, 230, 0.16);
+  background: rgba(10, 9, 8, 0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  font-size: 12.5px;
+  font-weight: 500;
+  color: #f5efe6;
+  white-space: nowrap;
+  transform: translateY(14px);
+  opacity: 0;
+  transition: transform 0.8s var(--ease-cine), opacity 0.6s var(--ease-out);
+  transition-delay: calc(0.35s + var(--i) * 45ms);
+}
+
+.panelActive .chip {
+  transform: none;
+  opacity: 1;
+}
+
+.chipIcon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+.chipIconMono {
+  filter: invert(1) brightness(1.3);
+}
+
+/* Los chips ocupan hasta ~150px; el título sube por encima. */
+.panelActive {
+  --chips-height: 150px;
+}
+
+/* --- Responsive ----------------------------------------------------------- */
+@media (max-width: 1100px) {
+  .panelActive {
+    --chips-height: 190px;
+  }
+}
+
+@media (max-width: 860px) {
+  .panels {
+    flex-direction: column;
+    height: auto;
+    min-height: 0;
+  }
+
+  .panel {
+    flex: none;
+    height: 92px;
+    transition: height 0.9s var(--ease-cine), border-color 0.6s var(--ease-out);
+  }
+
+  .panelActive {
+    height: 460px;
+    --chips-height: 210px;
+  }
+
+  .panel:not(.panelActive) .panelTitle {
+    writing-mode: horizontal-tb;
+    transform: none;
+  }
+
+  .panel:not(.panelActive) .panelHead {
+    left: 20px;
+    right: 20px;
+    top: 0;
+    bottom: 0;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .panelHead {
+    left: 20px;
+    right: 20px;
+  }
+
+  .chips {
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .panelActive {
+    height: 520px;
+    --chips-height: 260px;
+  }
+}

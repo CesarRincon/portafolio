@@ -1,0 +1,47 @@
+.head {
+  margin-bottom: clamp(40px, 5vw, 64px);
+  max-width: 62ch;
+}
+
+.center {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: var(--step-micro);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-ink);
+  margin-bottom: 18px;
+}
+
+.rule {
+  width: 34px;
+  height: 1px;
+  background: var(--accent-line);
+}
+
+.center .eyebrow {
+  justify-content: center;
+}
+
+.title {
+  font-size: var(--step-3);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+
+.lead {
+  margin-top: 18px;
+  color: var(--text-muted);
+  max-width: 56ch;
+}
+
+.center .lead {
+  margin-inline: auto;
+}

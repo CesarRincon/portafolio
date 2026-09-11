@@ -1,53 +1,105 @@
-.containerSplash {
+.splash {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Dos hojas de telón: se abren hacia arriba y hacia abajo al terminar. */
+.leaf {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 50.5%;
+  background: var(--bg);
+}
+
+.top {
+  top: 0;
+  border-bottom: 1px solid rgba(245, 181, 68, 0.08);
+}
+
+.bottom {
+  bottom: 0;
+}
+
+.content {
+  position: relative;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  flex: 1;
-  flex-direction: row;
-  gap: 10px;
-  animation: disappearContainer 10s forwards;
+  gap: 18px;
+  padding: 0 16px;
+  text-align: center;
+  will-change: transform, opacity, filter;
 }
 
-.textName {
-  color: #fff;
-  animation: disappear 3s forwards;
-  animation-delay: 1s;
+.name {
+  font-family: var(--font-cine);
+  font-size: clamp(3.2rem, 11vw, 9rem);
+  line-height: 0.9;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  padding-left: 0.05em;
+  background: linear-gradient(180deg, #ffffff 0%, #f2ece2 48%, #b9b0a3 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
-.textPortfolio {
-  color: #fff;
-  font-size: 30px;
-  font-weight: "400";
-  animation: disappearTextPortfolio 3s forwards;
-  animation-delay: 1s;
+:root[data-theme="light"] .name {
+  background: linear-gradient(180deg, #14120f 0%, #3a352e 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
 }
 
-@keyframes disappear {
-  0% {
-    clip-path: inset(0 0 0 0);
-    opacity: 1;
-  }
-  100% {
-    clip-path: inset(0 0 0 100%);
-    opacity: 0;
-  }
+.char {
+  display: inline-block;
+  will-change: transform, opacity, filter;
+  /* La caja crece por arriba y abajo sin mover el layout: así el clip incluye acentos. */
+  padding-block: 0.2em;
+  margin-block: -0.2em;
+  background: linear-gradient(180deg, #ffffff 0%, #f2ece2 48%, #b9b0a3 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
-@keyframes disappearTextPortfolio {
-  0% {
-    clip-path: inset(0 0 0 0);
-    opacity: 1;
-  }
-  100% {
-    clip-path: inset(0 100% 0 0);
-    opacity: 0;
-  }
+
+:root[data-theme="light"] .char {
+  background: linear-gradient(180deg, #14120f 0%, #3a352e 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
 }
-@keyframes disappearContainer {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-    display: none;
-  }
+
+.rule {
+  display: block;
+  width: min(280px, 50vw);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  transform-origin: center;
+}
+
+.role {
+  font-family: var(--font-mono);
+  font-size: var(--step-micro);
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--accent-ink);
+  padding-left: 0.42em;
+  white-space: nowrap;
+}
+
+.counter {
+  position: absolute;
+  right: 6vw;
+  bottom: 6vh;
+  font-family: var(--font-cine);
+  font-size: clamp(1.6rem, 4vw, 2.6rem);
+  letter-spacing: 0.1em;
+  color: var(--text-faint);
+  font-variant-numeric: tabular-nums;
 }

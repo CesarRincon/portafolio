@@ -1,0 +1,123 @@
+.section {
+  position: relative;
+  padding: clamp(96px, 12vw, 170px) 0;
+  background: var(--bg);
+}
+
+.timeline {
+  position: relative;
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.rail {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: clamp(160px, 22vw, 260px);
+  width: 1px;
+  background: linear-gradient(180deg, var(--accent), var(--accent-line) 60%, transparent);
+  transform-origin: top center;
+}
+
+.item {
+  position: relative;
+  display: grid;
+  grid-template-columns: clamp(160px, 22vw, 260px) minmax(0, 1fr);
+  gap: 0 clamp(32px, 5vw, 72px);
+  padding: clamp(36px, 5vw, 60px) 0;
+}
+
+.item + .item {
+  border-top: 1px solid var(--line);
+}
+
+.marker {
+  position: absolute;
+  left: clamp(160px, 22vw, 260px);
+  top: clamp(44px, 5.6vw, 70px);
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--accent);
+  transform: translateX(-50%);
+  box-shadow: 0 0 0 6px rgba(245, 181, 68, 0.12), 0 0 26px rgba(245, 181, 68, 0.5);
+}
+
+.period {
+  font-family: var(--font-cine);
+  font-size: clamp(1.7rem, 2.6vw, 2.4rem);
+  letter-spacing: 0.05em;
+  line-height: 1;
+  color: var(--text);
+  padding-right: 32px;
+  will-change: transform, opacity, filter;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 64ch;
+  will-change: transform, opacity, filter;
+}
+
+.role {
+  font-size: var(--step-2);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+.company {
+  font-family: var(--font-mono);
+  font-size: var(--step-micro);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-ink);
+}
+
+.text {
+  margin-top: 8px;
+  color: var(--text-muted);
+  line-height: 1.75;
+}
+
+.tags {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.tags li {
+  padding: 5px 10px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+@media (max-width: 700px) {
+  .rail {
+    left: 6px;
+  }
+
+  .item {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding-left: 32px;
+  }
+
+  .marker {
+    left: 6px;
+    top: clamp(40px, 6vw, 52px);
+  }
+}

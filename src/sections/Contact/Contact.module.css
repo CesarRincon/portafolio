@@ -1,0 +1,313 @@
+.section {
+  position: relative;
+  padding: clamp(96px, 12vw, 170px) 0 clamp(80px, 10vw, 140px);
+  background: var(--bg);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Foco de luz cálida al fondo: la sección es el último plano de la película. */
+.section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(245, 181, 68, 0.12), transparent 70%);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(260px, 0.7fr);
+  gap: clamp(32px, 6vw, 96px);
+  align-items: start;
+  max-width: 1060px;
+  margin: 0 auto;
+}
+
+/* --- Formulario ----------------------------------------------------------- */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.fieldRow {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 28px;
+}
+
+.field {
+  position: relative;
+  padding-top: 22px;
+  padding-bottom: 22px;
+}
+
+.input {
+  width: 100%;
+  padding: 12px 0 12px;
+  border: 0;
+  border-bottom: 1px solid var(--line-strong);
+  background: transparent;
+  color: var(--text);
+  font-size: var(--step-0);
+  outline: none;
+  transition: border-color 0.4s var(--ease-out), box-shadow 0.4s var(--ease-out);
+  border-radius: 0;
+}
+
+.input:focus {
+  border-bottom-color: var(--accent);
+  box-shadow: 0 1px 0 var(--accent);
+}
+
+.inputInvalid,
+.inputInvalid:focus {
+  border-bottom-color: var(--danger);
+  box-shadow: 0 1px 0 var(--danger);
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 150px;
+  line-height: 1.6;
+}
+
+/* Etiqueta flotante: arriba y pequeña cuando hay foco o contenido. */
+.label {
+  position: absolute;
+  left: 0;
+  top: 34px;
+  font-size: var(--step-0);
+  color: var(--text-faint);
+  pointer-events: none;
+  transform-origin: left top;
+  transition: transform 0.5s var(--ease-cine), color 0.3s var(--ease-out);
+}
+
+.input:focus + .label,
+.input:not(:placeholder-shown) + .label {
+  transform: translateY(-30px) scale(0.72);
+  color: var(--accent-ink);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.error {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  font-size: 12.5px;
+  color: var(--danger);
+}
+
+.submit {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 54px;
+  padding: 0 30px;
+  margin-top: 10px;
+  border-radius: var(--radius-pill);
+  background: var(--accent);
+  color: var(--on-accent);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  box-shadow: 0 20px 50px -20px rgba(245, 181, 68, 0.6);
+  transition: transform 0.6s var(--ease-cine), opacity 0.3s var(--ease-out);
+}
+
+.submit:hover {
+  transform: translateY(-2px);
+}
+
+.submit:active {
+  transform: scale(0.97);
+}
+
+.submit:disabled {
+  opacity: 0.7;
+  cursor: progress;
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid rgba(10, 9, 8, 0.25);
+  border-top-color: var(--on-accent);
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* --- Estado de éxito ------------------------------------------------------ */
+.sent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 40px 36px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--accent-line);
+  background: var(--accent-soft);
+}
+
+.sentIcon {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-size: 26px;
+}
+
+.sentTitle {
+  font-family: var(--font-cine);
+  font-size: 2.2rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.sentBody {
+  color: var(--text-muted);
+}
+
+.sentAgain {
+  margin-top: 10px;
+  padding: 10px 18px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--line-strong);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+/* --- Columna directa ------------------------------------------------------ */
+.asideCol {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding-top: 22px;
+}
+
+.asideLabel {
+  font-family: var(--font-mono);
+  font-size: var(--step-micro);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.emailCard {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 22px 22px 20px;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: linear-gradient(160deg, var(--bg-card-hover), var(--bg-card));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  text-align: left;
+  transition: border-color 0.4s var(--ease-out), transform 0.6s var(--ease-cine);
+}
+
+.emailCard:hover {
+  border-color: var(--accent-line);
+  transform: translateY(-3px);
+}
+
+.emailIcon {
+  font-size: 20px;
+  color: var(--accent-ink);
+}
+
+.emailValue {
+  font-size: var(--step-0);
+  font-weight: 500;
+  color: var(--text);
+  word-break: break-all;
+}
+
+.emailAction {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.links {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 56px;
+  border-bottom: 1px solid var(--line);
+  font-size: var(--step-0);
+  font-weight: 500;
+  color: var(--text-soft);
+  transition: color 0.3s var(--ease-out), padding-left 0.6s var(--ease-cine);
+}
+
+.link:hover {
+  color: var(--text);
+  padding-left: 6px;
+}
+
+.link svg:first-child {
+  color: var(--accent-ink);
+  font-size: 18px;
+}
+
+.linkArrow {
+  margin-left: auto;
+  color: var(--text-faint);
+  transition: transform 0.5s var(--ease-cine), color 0.3s var(--ease-out);
+}
+
+.link:hover .linkArrow {
+  transform: translate(3px, -3px);
+  color: var(--accent-ink);
+}
+
+/* --- Responsive ----------------------------------------------------------- */
+@media (max-width: 860px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .fieldRow {
+    grid-template-columns: 1fr;
+  }
+
+  .submit {
+    align-self: stretch;
+    justify-content: center;
+  }
+}
